@@ -11,13 +11,20 @@ export class RainComponent implements OnInit {
     constructor(private engine: EngineService) {}
 
     ngOnInit(): void {
-      setInterval(() => {
+      // setInterval(() => {
+      //   const x = Math.random() * window.innerWidth;
+      //   const y = 0;
+      //   const width = Math.random() * 100;
+      //   const height = Math.random() * 100;
+      //   this.engine.addRect(x, y, width, height);
+      // }, 1000);
+      for (let i = 0; i < 4; i++) {
         const x = Math.random() * window.innerWidth;
-        const y = 0;
-        const width = Math.random() * 100;
-        const height = Math.random() * 100;
+        const y = Math.random() * window.innerHeight;
+        const width = Math.random() * 100 + 100;
+        const height = Math.random() * 100 + 100;
         this.engine.addRect(x, y, width, height);
-      }, 100);
+      }
       this.engine.run();
     }
 
