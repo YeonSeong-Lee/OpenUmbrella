@@ -20,7 +20,7 @@ export class EngineService {
     }
   });
   runner = Matter.Runner.create();
-  ground = Matter.Bodies.rectangle(window.innerWidth / 2, window.innerHeight, window.innerWidth, 1, { isStatic: true, label: 'ground', render: { visible: false }});
+  ground = Matter.Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 1.2, window.innerWidth / 2, 42, { isStatic: true, label: 'ground', render: { visible: true }});
   leftWall = Matter.Bodies.rectangle(0, window.innerHeight / 2, 1, window.innerHeight, { isStatic: true, label: 'leftWall', render: { visible: false } });
   rightWall = Matter.Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 1, window.innerHeight, { isStatic: true, label: 'rightWall', render: { visible: false } });
   ceiling = Matter.Bodies.rectangle(window.innerWidth / 2, 0, window.innerWidth, 1, { isStatic: true, label: 'ceiling', render: { visible: false } });
@@ -55,12 +55,12 @@ export class EngineService {
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
-    Matter.Body.setPosition(this.ground, { x: window.innerWidth / 2, y: window.innerHeight });
+    Matter.Body.setPosition(this.ground, { x: window.innerWidth / 2, y: window.innerHeight / 1.2 });
     Matter.Body.setPosition(this.leftWall, { x: 0, y: window.innerHeight / 2 });
     Matter.Body.setPosition(this.rightWall, { x: window.innerWidth, y: window.innerHeight / 2 });
     Matter.Body.setPosition(this.ceiling, { x: window.innerWidth / 2, y: 0 });
 
-    Matter.Body.scale(this.ground, window.innerWidth / this.ground.bounds.max.x, 1);
+    Matter.Body.scale(this.ground, 1, 1);
     Matter.Body.scale(this.leftWall, 1, window.innerHeight / this.leftWall.bounds.max.y);
     Matter.Body.scale(this.rightWall, 1, window.innerHeight / this.rightWall.bounds.max.y);
     Matter.Body.scale(this.ceiling, window.innerWidth / this.ceiling.bounds.max.x, 1);
@@ -82,11 +82,7 @@ export class EngineService {
     Matter.World.add(this.engine.world, mouseConstraint);
 
     // add walls
-
     Matter.World.add(this.engine.world, [this.ground, this.leftWall, this.rightWall, this.ceiling]);
-
-    // set gravity to 0
-    this.engine.gravity.y = 0;
 
     // add resize event
     window.addEventListener('resize',
