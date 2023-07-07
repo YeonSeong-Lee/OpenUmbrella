@@ -67,6 +67,41 @@ export class EngineService {
 
   }
 
+  private keyboardHandler(event: KeyboardEvent) {
+    if (event.key === ' ') {
+      this.addRect(Math.random() * window.innerWidth, 0, Math.random() * 100, Math.random() * 100);
+    }
+    if (event.key === 'ArrowLeft') {
+      Matter.Body.translate(this.ground, { x: -10, y: 0 });
+    }
+    if (event.key === 'ArrowRight') {
+      Matter.Body.translate(this.ground, { x: 10, y: 0 });
+    }
+    // rotate
+    if (event.key === 'ArrowUp') {
+      (() => {
+        Matter.Body.setCentre(this.ground, { x: window.innerWidth / 2, y: window.innerHeight / 1.2 })
+        Matter.Body.setCentre(this.ground, { x: (this.ground.position.x + window.innerWidth / 3) - window.innerWidth / 2, y: window.innerHeight / 1.2 }  )
+        Matter.Body.rotate(this.ground, -0.42);
+        setTimeout(() => {
+          Matter.Body.rotate(this.ground, 0.42);
+          Matter.Body.setCentre(this.ground, { x: window.innerWidth / 2, y: window.innerHeight / 1.2 })
+        }, 500);
+      })();
+    }
+    if (event.key === 'ArrowDown') {
+      (() => {
+        Matter.Body.setCentre(this.ground, { x: window.innerWidth / 2, y: window.innerHeight / 1.2 })
+        Matter.Body.setCentre(this.ground, { x: (this.ground.position.x + window.innerWidth / 3), y: window.innerHeight / 1.2 }  )
+        Matter.Body.rotate(this.ground, 0.42);
+        setTimeout(() => {
+          Matter.Body.rotate(this.ground, -0.42);
+          Matter.Body.setCentre(this.ground, { x: window.innerWidth / 2, y: window.innerHeight / 1.2 })
+        }, 500);
+      })();
+    }
+  }
+
   private init() {
     // add mouse control
     const mouse = Matter.Mouse.create(this.render.canvas);
@@ -88,11 +123,16 @@ export class EngineService {
     window.addEventListener('resize',
       this.updateByWindowSize.bind(this)
     );
+
+    // add event listener for keydown
+    window.addEventListener('keydown', this.keyboardHandler.bind(this));
   }
+
   ngOnDestroy(): void {
     Matter.Engine.clear(this.engine);
     Matter.Render.stop(this.render);
     Matter.Runner.stop(this.runner);
     window.removeEventListener('resize', this.updateByWindowSize.bind(this));
+    window.removeEventListener('keydown', this.keyboardHandler.bind(this));
   }
 }
