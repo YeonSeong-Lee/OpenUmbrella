@@ -32,5 +32,4 @@ export class RainComponent implements OnInit {
       }, 50);
       this.engine.run();
     }
-
 }
