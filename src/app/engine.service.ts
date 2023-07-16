@@ -9,7 +9,6 @@ export class EngineService {
   );
   render = Matter.Render.create({
     element: document.body,
-    canvas: document.getElementById('rain') as HTMLCanvasElement,
     engine: this.engine,
     options: {
       background: 'transparent',

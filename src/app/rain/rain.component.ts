@@ -11,7 +11,7 @@ export class RainComponent implements OnInit {
     constructor(private engine: EngineService) {}
 
     ngOnInit(): void {
-      this.engine.addCircle(window.innerWidth / 2, window.innerHeight / 2, 70,
+      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.6, 70,
       {
         isStatic: true,
         restitution: 0.42,
