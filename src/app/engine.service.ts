@@ -42,7 +42,7 @@ export class EngineService {
   private updateByWindowSize() {
     const umbrella = this.engine.world.bodies.find(body => body.label === 'umbrella');
     if (umbrella) {
-      Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
+      Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.6 });
     }
     this.render.bounds.max.x = window.innerWidth;
     this.render.bounds.max.y = window.innerHeight;
