@@ -55,7 +55,16 @@ export class EngineService {
     this.render.options.height = window.innerHeight;
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
+
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
+  }
+
+  percentX(percent: number) {
+    return Math.round(window.innerWidth * percent / 100);
+  }
+
+  percentY(percent: number) {
+    return Math.round(window.innerHeight * percent / 100);
   }
 
 
