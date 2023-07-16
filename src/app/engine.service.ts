@@ -41,21 +41,20 @@ export class EngineService {
   }
 
   private updateByWindowSize() {
-    this.engine.world.bodies.forEach(body => {
-      if (body.position.x > window.innerWidth) {
-        Matter.Body.setPosition(body, { x: window.innerWidth, y: body.position.y });
-      }
-      if (body.position.y > window.innerHeight) {
-        Matter.Body.setPosition(body, { x: body.position.x, y: window.innerHeight });
-      }
-    })
+    const umbrella = this.engine.world.bodies.find(body => body.label === 'umbrella');
+    if (umbrella) {
+      Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
+      // const { min, max } = umbrella.bounds;
+      // const width = max.x - min.x;
+      // const scale = window.innerWidth / width * 0.42;
+      // Matter.Body.scale(umbrella, scale, scale);
+    }
     this.render.bounds.max.x = window.innerWidth;
     this.render.bounds.max.y = window.innerHeight;
     this.render.options.width = window.innerWidth;
     this.render.options.height = window.innerHeight;
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
-
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
   }
 
