@@ -21,9 +21,14 @@ export class EngineService {
   });
   runner = Matter.Runner.create();
 
-  addRect(x: number, y: number, width: number, height: number) {
-    const rect = Matter.Bodies.rectangle(x, y, width, height);
+  addRect(x: number, y: number, width: number, height: number, options?: Matter.IBodyDefinition) {
+    const rect = Matter.Bodies.rectangle(x, y, width, height, options);
     Matter.World.add(this.engine.world, [rect]);
+  }
+
+  addCircle(x: number, y: number, radius: number, options?: Matter.IBodyDefinition) {
+    const circle = Matter.Bodies.circle(x, y, radius, options);
+    Matter.World.add(this.engine.world, [circle]);
   }
 
   /*
