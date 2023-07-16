@@ -44,10 +44,6 @@ export class EngineService {
     const umbrella = this.engine.world.bodies.find(body => body.label === 'umbrella');
     if (umbrella) {
       Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
-      // const { min, max } = umbrella.bounds;
-      // const width = max.x - min.x;
-      // const scale = window.innerWidth / width * 0.42;
-      // Matter.Body.scale(umbrella, scale, scale);
     }
     this.render.bounds.max.x = window.innerWidth;
     this.render.bounds.max.y = window.innerHeight;
