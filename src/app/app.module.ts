@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RainComponent } from './rain/rain.component';
+import { developerComponent } from './developer/developer.component';
+import { ContributorComponent } from './contributor/contributor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RainComponent
+    RainComponent,
+    developerComponent,
+    ContributorComponent
   ],
   imports: [
     BrowserModule,
