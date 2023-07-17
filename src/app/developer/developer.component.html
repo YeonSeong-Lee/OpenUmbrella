@@ -1,1 +1,11 @@
-<p>developer works!</p>
+<p>developers</p>
+<ul *ngFor="let name of developers">
+  <li>{{name}}</li>
+</ul>
+
+<p>developer repo</p>
+<ul *ngFor="let repo of repos">
+  <li>
+    <a href={{repo.url}}>{{repo.kind}}</a>
+  </li>
+</ul>

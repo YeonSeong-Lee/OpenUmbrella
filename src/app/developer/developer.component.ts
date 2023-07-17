@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './developer.component.html',
   styleUrls: ['./developer.component.css']
 })
-export class developerComponent {
-
+export class DeveloperComponent {
+  developers = ['seongyle', 'susong']
+  repos = [ {'kind': 'frontend', 'url': 'https://github.com/YeonSeong-Lee/OpenUmbrella'},
+           {'kind': 'backend', 'url': 'https://github.com/SeungWoonSong/openUmbrella'}
+          ]
 }
