@@ -11,19 +11,25 @@ export class RainComponent implements OnInit {
     constructor(private engine: EngineService) {}
 
     ngOnInit(): void {
-      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.6, 200,
+      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, 150,
       {
-        isStatic: true,
+        isStatic: false,
         restitution: 0.42,
         label: 'umbrella',
-        render: {
-          sprite: {
-          texture: 'assets/umbrella.svg',
-          xScale: 3,
-          yScale: 3.4
-         }
-       }
-      });
+          render: {
+              sprite: {
+                texture: 'assets/umbrella.svg',
+                xScale: 2.1,
+                yScale: 2.3
+               }
+             }
+          });
+      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.4, 1, { isStatic: true, label: 'umbrella-pin' })
+      const umbrella = this.engine.getBodyBtLabel('umbrella');
+      const umbrellaPin = this.engine.getBodyBtLabel('umbrella-pin');
+      if (umbrella && umbrellaPin) {
+        this.engine.addConstraint(umbrella, umbrellaPin, { render: { visible: false } });
+      }
       setInterval(() => {
         const x = Math.random() * window.innerWidth;
         const y = 0;

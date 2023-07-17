@@ -30,6 +30,19 @@ export class EngineService {
     Matter.World.add(this.engine.world, [circle]);
   }
 
+  addConstraint(bodyA: Matter.Body, bodyB: Matter.Body, options?: Matter.IConstraintDefinition) {
+    const constraint = Matter.Constraint.create({
+      bodyA: bodyA,
+      bodyB: bodyB,
+      ...options
+    });
+    Matter.World.add(this.engine.world, [constraint]);
+  }
+
+  getBodyBtLabel(label: string) {
+    return this.engine.world.bodies.find(body => body.label === label);
+  }
+
   /*
   @description run the engine
   */
@@ -40,9 +53,13 @@ export class EngineService {
   }
 
   private updateByWindowSize() {
-    const umbrella = this.engine.world.bodies.find(body => body.label === 'umbrella');
+    const umbrella = this.getBodyBtLabel('umbrella');
     if (umbrella) {
       Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.6 });
+    }
+    const umbrellaPin = this.getBodyBtLabel('umbrella-pin');
+    if (umbrellaPin) {
+      Matter.Body.setPosition(umbrellaPin, { x: window.innerWidth / 2, y: window.innerHeight * 0.2 });
     }
     this.render.bounds.max.x = window.innerWidth;
     this.render.bounds.max.y = window.innerHeight;
@@ -51,6 +68,12 @@ export class EngineService {
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
+  }
+
+  private addForceByMouse(element: MouseEvent) {
+    const mousePosition = { x: element.clientX, y: element.clientY };
+    const wind = mousePosition.x - window.innerWidth / 2;
+    this.engine.gravity.x = wind / 500;
   }
 
   percentX(percent: number) {
@@ -87,6 +110,9 @@ export class EngineService {
     window.addEventListener('resize',
       this.updateByWindowSize.bind(this)
     );
+    window.addEventListener('mousemove',
+      this.addForceByMouse.bind(this)
+    );
   }
 
   ngOnDestroy(): void {
@@ -94,5 +120,6 @@ export class EngineService {
     Matter.Render.stop(this.render);
     Matter.Runner.stop(this.runner);
     window.removeEventListener('resize', this.updateByWindowSize.bind(this));
+    window.removeEventListener('mousemove', this.addForceByMouse.bind(this));
   }
 }
