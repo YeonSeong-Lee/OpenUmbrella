@@ -28,7 +28,7 @@ export class RainComponent implements OnInit {
       const umbrella = this.engine.getBodyBtLabel('umbrella');
       const umbrellaPin = this.engine.getBodyBtLabel('umbrella-pin');
       if (umbrella && umbrellaPin) {
-        this.engine.addConstraint(umbrella, umbrellaPin, { length: window.innerHeight * 0.42, label: 'umberlla-constraint', render: { visible: true } });
+        this.engine.addConstraint(umbrella, umbrellaPin, { length: window.innerHeight * 0.42, label: 'umberlla-constraint', render: { visible: false } });
       }
       setInterval(() => {
         const x = Math.random() * window.innerWidth;

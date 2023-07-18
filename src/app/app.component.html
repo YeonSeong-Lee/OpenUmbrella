@@ -1,7 +1,17 @@
-<mat-toolbar>
-  <button mat-button routerLink="/rain">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{title}}</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<mat-drawer-container class="main-container">
+  <mat-toolbar>
+    <button mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+  </mat-toolbar>
+  <mat-drawer #drawer mode="over">
+    <li>
+      <a mat-list-item routerLink="/rain">Rain</a>
+    </li>
+    <li>
+      <a mat-list-item routerLink="/developer">Developer</a>
+    </li>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
