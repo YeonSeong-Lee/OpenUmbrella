@@ -73,7 +73,7 @@ export class EngineService {
   private addForceByMouse(element: MouseEvent) {
     const mousePosition = { x: element.clientX, y: element.clientY };
     const wind = mousePosition.x - window.innerWidth / 2;
-    this.engine.gravity.x = wind / 500;
+    this.engine.gravity.x = wind / window.innerWidth * 0.4;
   }
 
   percentX(percent: number) {
