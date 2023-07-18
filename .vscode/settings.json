@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "rain",
-        "engine"
+        "engine",
+        "view"
     ]
 }
