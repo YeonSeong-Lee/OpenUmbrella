@@ -43,6 +43,12 @@ export class EngineService {
     return this.engine.world.bodies.find(body => body.label === label);
   }
 
+  getconstraintByLabel(label: string) {
+    return this.engine.world.constraints.find(constraint => {
+      return constraint.label === label
+    });
+  }
+
   /*
   @description run the engine
   */
@@ -55,11 +61,15 @@ export class EngineService {
   private updateByWindowSize() {
     const umbrella = this.getBodyBtLabel('umbrella');
     if (umbrella) {
-      Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.6 });
+      Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.65 });
     }
     const umbrellaPin = this.getBodyBtLabel('umbrella-pin');
     if (umbrellaPin) {
       Matter.Body.setPosition(umbrellaPin, { x: window.innerWidth / 2, y: window.innerHeight * 0.2 });
+    }
+    const umbrellaConstraint = this.getconstraintByLabel('umberlla-constraint');
+    if (umbrellaConstraint) {
+      umbrellaConstraint.length = window.innerHeight * 0.42;
     }
     this.render.bounds.max.x = window.innerWidth;
     this.render.bounds.max.y = window.innerHeight;
@@ -73,6 +83,7 @@ export class EngineService {
   private addForceByMouse(element: MouseEvent) {
     const mousePosition = { x: element.clientX, y: element.clientY };
     const wind = mousePosition.x - window.innerWidth / 2;
+    // FIXME: more natural
     this.engine.gravity.x = wind / window.innerWidth * 0.7;
   }
 
@@ -86,19 +97,6 @@ export class EngineService {
 
 
   private init() {
-    // add mouse control
-    const mouse = Matter.Mouse.create(this.render.canvas);
-    const mouseConstraint = Matter.MouseConstraint.create(this.engine, {
-      mouse: mouse,
-      constraint: {
-        render: {
-          visible: true
-        },
-        stiffness: 0.2
-      }
-    });
-    Matter.World.add(this.engine.world, mouseConstraint);
-
     this.engine.world.bodies.forEach(body => {
       body.frictionAir = 0;
       body.friction = 0;

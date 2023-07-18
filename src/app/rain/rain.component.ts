@@ -24,11 +24,11 @@ export class RainComponent implements OnInit {
                }
              }
           });
-      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.4, 1, { isStatic: true, label: 'umbrella-pin' })
+      this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin' })
       const umbrella = this.engine.getBodyBtLabel('umbrella');
       const umbrellaPin = this.engine.getBodyBtLabel('umbrella-pin');
       if (umbrella && umbrellaPin) {
-        this.engine.addConstraint(umbrella, umbrellaPin, { render: { visible: false } });
+        this.engine.addConstraint(umbrella, umbrellaPin, { length: window.innerHeight * 0.42, label: 'umberlla-constraint', render: { visible: true } });
       }
       setInterval(() => {
         const x = Math.random() * window.innerWidth;
