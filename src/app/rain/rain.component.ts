@@ -34,7 +34,7 @@ export class RainComponent implements OnInit {
         const x = Math.random() * window.innerWidth;
         const y = 0;
         const radius = Math.random() * window.innerHeight / 50 + 5;
-        this.engine.addCircle(x, y, radius, { restitution: Math.random() , friction: 0.1, frictionAir: 0.01 });
+        this.engine.addCircle(x, y, radius, { restitution: 0.42 , friction: 0.1, frictionAir: 0.01 });
       }, 50);
       this.engine.run();
     }
