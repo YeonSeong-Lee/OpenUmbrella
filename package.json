@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "html5-qrcode": "^2.3.8",
     "matter-js": "^0.19.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -27,10 +30,18 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.0",
+    "@angular-eslint/builder": "16.1.0",
+    "@angular-eslint/eslint-plugin": "16.1.0",
+    "@angular-eslint/eslint-plugin-template": "16.1.0",
+    "@angular-eslint/schematics": "16.1.0",
+    "@angular-eslint/template-parser": "16.1.0",
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
     "@types/matter-js": "^0.18.5",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
+    "eslint": "^8.44.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

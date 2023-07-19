@@ -5,5 +5,6 @@
         "view",
         "contributor",
         "share"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
