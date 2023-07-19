@@ -8,7 +8,7 @@ describe('ShareComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ShareComponent]
+      declarations: [ShareComponent],
     });
     fixture = TestBed.createComponent(ShareComponent);
     component = fixture.componentInstance;
