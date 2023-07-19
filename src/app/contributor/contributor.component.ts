@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./contributor.component.css']
 })
 export class ContributorComponent {
-
+  contributors = ['jmaing', 'juha', 'jihokim2', 'seongyle', 'sokwon', 'hhwang', 'yukim'];
 }
