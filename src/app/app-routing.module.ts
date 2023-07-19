@@ -11,11 +11,11 @@ const routes: Routes = [
   { path: 'developer', component: DeveloperComponent },
   { path: 'contributor', component: ContributorComponent },
   { path: 'share', component: ShareComponent },
-  { path: '**', redirectTo: '/rain' }
+  { path: '**', redirectTo: '/rain' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

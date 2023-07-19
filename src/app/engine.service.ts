@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import * as Matter from 'matter-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EngineService {
   engine = Matter.Engine.create(
   );
+
   render = Matter.Render.create({
     element: document.body,
     engine: this.engine,
@@ -15,9 +16,10 @@ export class EngineService {
       wireframes: false,
       width: window.innerWidth,
       height: window.innerHeight,
-      pixelRatio: window.devicePixelRatio
-    }
+      pixelRatio: window.devicePixelRatio,
+    },
   });
+
   runner = Matter.Runner.create();
 
   addRect(x: number, y: number, width: number, height: number, options?: Matter.IBodyDefinition) {
@@ -34,7 +36,7 @@ export class EngineService {
     const constraint = Matter.Constraint.create({
       bodyA: bodyA,
       bodyB: bodyB,
-      ...options
+      ...options,
     });
     Matter.World.add(this.engine.world, [constraint]);
   }
@@ -45,7 +47,7 @@ export class EngineService {
 
   getconstraintByLabel(label: string) {
     return this.engine.world.constraints.find(constraint => {
-      return constraint.label === label
+      return constraint.label === label;
     });
   }
 
@@ -101,15 +103,15 @@ export class EngineService {
       body.frictionAir = 0;
       body.friction = 0;
       Matter.Body.setInertia(body, Infinity);
-    })
+    });
 
 
     // add resize event
     window.addEventListener('resize',
-      this.updateByWindowSize.bind(this)
+      this.updateByWindowSize.bind(this),
     );
     window.addEventListener('mousemove',
-      this.addForceByMouse.bind(this)
+      this.addForceByMouse.bind(this),
     );
   }
 
