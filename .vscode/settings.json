@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "rain",
         "engine",
-        "view"
+        "view",
+        "contributor"
     ]
 }
