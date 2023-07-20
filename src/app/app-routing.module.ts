@@ -5,6 +5,7 @@ import { DeveloperComponent } from "./developer/developer.component";
 import { ContributorComponent } from "./contributor/contributor.component";
 import { ShareComponent } from "./share/share.component";
 import { HistoryComponent } from "./history/history.component";
+import { HistoryDetailComponent } from "./history/history-detail/history-detail.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/rain", pathMatch: "full" },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "contributor", component: ContributorComponent },
   { path: "share", component: ShareComponent },
   { path: "history", component: HistoryComponent },
+  { path: "history/:id", component: HistoryDetailComponent },
   { path: "**", redirectTo: "/rain" },
 ];
 

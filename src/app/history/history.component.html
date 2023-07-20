@@ -1,1 +1,3 @@
-<p>history works!</p>
+<li *ngFor="let status of statuses">
+    <a routerLink="/history/{{status.id}}">{{status.id}} {{status.status}}</a>
+</li>
