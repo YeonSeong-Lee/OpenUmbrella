@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { Html5Qrcode } from "html5-qrcode";
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Html5Qrcode } from 'html5-qrcode';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class QRService {
   private html5QrcodeScanner!: Html5Qrcode;
@@ -11,13 +11,13 @@ export class QRService {
   private config = { fps: 100, qrbox: 300 };
 
   public startScan() {
-    console.log("startScan");
-    this.html5QrcodeScanner = new Html5Qrcode("reader");
+    console.log('startScan');
+    this.html5QrcodeScanner = new Html5Qrcode('reader');
     this.html5QrcodeScanner.start(
-      { facingMode: "environment" },
+      { facingMode: 'environment' },
       this.config,
       this.onScanSuccess,
-      this.onScanError
+      this.onScanError,
     );
   }
 
