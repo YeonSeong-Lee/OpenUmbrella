@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'rain', component: RainComponent },
   { path: 'developer', component: DeveloperComponent },
   { path: 'contributor', component: ContributorComponent },
+  { path: 'share/:id', component: ShareComponent },
   { path: 'share', component: ShareComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'history/:id', component: HistoryDetailComponent },
