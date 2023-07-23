@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QRService } from '../qr.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { QRService } from '../qr.service';
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.css'],
 })
-export class ShareComponent {
+export class ShareComponent implements OnInit, OnDestroy {
   constructor(private qrService: QRService) {}
 
   ngOnInit() {
