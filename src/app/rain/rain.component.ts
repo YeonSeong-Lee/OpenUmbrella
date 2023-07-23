@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./rain.component.css'],
 })
 export class RainComponent implements OnInit {
-  rainProbability = 0;
+  rainProbability:  number | undefined;
 
   constructor(private engine: EngineService) {}
 
@@ -37,6 +37,7 @@ export class RainComponent implements OnInit {
   }
 
   private getCurrentGaepoDongWeather() {
+    // TODO: base_date, base_time 를 적절한 값으로 변경
     const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=20230719&base_time=0500&nx=62&ny=25`;
     fetch(url)
       .then(response => response.json())
