@@ -1,0 +1,11 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    position: absolute;
+    bottom: 5vh;
+}
