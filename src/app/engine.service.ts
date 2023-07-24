@@ -82,10 +82,10 @@ export class EngineService implements OnDestroy {
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
   }
 
-  private addForceByMouse(element: MouseEvent) {
+  private addCircleInMousePoint(element: MouseEvent) {
     const mousePosition = { x: element.clientX, y: element.clientY };
-    const wind = mousePosition.x - window.innerWidth / 2;
-    this.engine.gravity.x = wind / window.innerWidth * 0.7;
+    const radius = Math.random() * window.innerHeight / 50 + 5;
+    this.addCircle(mousePosition.x, mousePosition.y, radius, { restitution: 0.42, friction: 0.1, frictionAir: 0.01 });
   }
 
   private init() {
@@ -101,7 +101,7 @@ export class EngineService implements OnDestroy {
       this.updateByWindowSize.bind(this),
     );
     window.addEventListener('click',
-      this.addForceByMouse.bind(this),
+      this.addCircleInMousePoint.bind(this),
     );
   }
 
@@ -112,6 +112,6 @@ export class EngineService implements OnDestroy {
     Matter.Engine.clear(this.engine);
     this.render.canvas.remove();
     window.removeEventListener('resize', this.updateByWindowSize.bind(this));
-    window.removeEventListener('click', this.addForceByMouse.bind(this));
+    window.removeEventListener('click', this.addCircleInMousePoint.bind(this));
   }
 }
