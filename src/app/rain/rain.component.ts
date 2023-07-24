@@ -79,23 +79,22 @@ export class RainComponent implements OnInit, OnDestroy {
   }
 
   private getBaseTime() {
-    const date = new Date();
-    const minute = date.getMinutes();
-    let hour = date.getHours();
-    let baseTime;
-    if (hour % 3 !== 0) {
-      hour = hour - (hour % 3);
-    }
-    if (hour < 2) {
-      baseTime = '2300';
-    } else if (minute < 15) {
-      baseTime = (hour - 3) + '00';
-    } else {
-      baseTime = hour + '00';
-    }
+    const baseTimes = ['0200', '0500', '0800', '1100', '1400', '1700', '2000', '2300'];
 
-    baseTime = baseTime.padStart(4, '0');
-    return baseTime;
+    // 현재 시간을 구합니다.
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const currentTime = `${currentHour.toString().padStart(2, '0')}${currentMinute.toString().padStart(2, '0')}`;
+  
+    if (currentTime < '0200') return '2300';
+    // API 제공 시간과 비교하여 현재 시간보다 작은 마지막 base_time을 찾습니다.
+    for (let i = baseTimes.length - 1; i >= 0; i--) {
+      if (baseTimes[i] < currentTime) {
+        return baseTimes[i];
+      }
+    }
+    return '2300';
   }
 
   ngOnDestroy(): void {
