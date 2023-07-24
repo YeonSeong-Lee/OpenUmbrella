@@ -95,8 +95,6 @@ export class EngineService implements OnDestroy {
       Matter.Body.setInertia(body, Infinity);
     });
 
-
-    // add resize event
     window.addEventListener('resize',
       this.updateByWindowSize.bind(this),
     );
