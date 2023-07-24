@@ -37,13 +37,15 @@ export class RainComponent implements OnInit {
   }
 
   private getCurrentGaepoDongWeather() {
-    // TODO: base_date, base_time 를 적절한 값으로 변경
-    const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=20230719&base_time=0500&nx=62&ny=25`;
+    const baseDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const baseTime = this.getBaseTime();
+    const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=62&ny=25`;
     fetch(url)
       .then(response => response.json())
-      .then(data => data.response.body.items.item.filter((item: any) => item.category === 'POP')[0].fcstValue)
+      .then(data => data.response.body?.items.item.filter((item: any) => item.category === 'POP')[0].fcstValue)
       .then(pop => this.rainProbability = pop)
-      .then(this.runRain.bind(this));
+      .then(this.runRain.bind(this))
+      .catch(error => console.error(error));
   }
 
   // TODO: delte setInterval ID when component is destroyed
@@ -51,6 +53,9 @@ export class RainComponent implements OnInit {
     let delta = 1000 / rainProbability;
     if (delta < 12.5) {
       delta = 12.5;
+    }
+    if (delta > 1000) {
+      delta = 100;
     }
     setInterval(() => {
       const radius = Math.random() * window.innerHeight / 50 + 5;
@@ -61,5 +66,22 @@ export class RainComponent implements OnInit {
         this.engine.addCircle(Math.random() * window.innerWidth, 0, radius, { restitution: 0.42, friction: 0.1, frictionAir: 0.01 });
       }
     }, delta * 10);
+  }
+
+  private getBaseTime() {
+    const date = new Date();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    let baseTime;
+    if (minute < 45 && hour === 0) {
+      baseTime = '2300';
+    } else if (minute < 45) {
+      baseTime = (hour - 1) + '00';
+    } else {
+      baseTime = hour + '00';
+    }
+
+    baseTime = baseTime.padStart(4, '0');
+    return baseTime;
   }
 }
