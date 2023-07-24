@@ -37,12 +37,14 @@ export class RainComponent implements OnInit {
   }
 
   private getCurrentGaepoDongWeather() {
-    const baseDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const baseDate = this.getBaseDate();
     const baseTime = this.getBaseTime();
+    console.log(baseDate, baseTime);
     const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=62&ny=25`;
+    console.log(url);
     fetch(url)
       .then(response => response.json())
-      .then(data => data.response.body?.items.item.filter((item: any) => item.category === 'POP')[0].fcstValue)
+      .then(data => data.response.body?.items.item.filter((item: { category: string }) => item.category === 'POP')[0].fcstValue)
       .then(pop => this.rainProbability = pop)
       .then(this.runRain.bind(this))
       .catch(error => console.error(error));
@@ -68,15 +70,25 @@ export class RainComponent implements OnInit {
     }, delta * 10);
   }
 
+  private getBaseDate() {
+    if (new Date().getHours() < 1) {
+      return new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10).replace(/-/g, '');
+    }
+    return new Date().toISOString().slice(0, 10).replace(/-/g, '');
+  }
+
   private getBaseTime() {
     const date = new Date();
-    const hour = date.getHours();
     const minute = date.getMinutes();
+    let hour = date.getHours();
     let baseTime;
-    if (minute < 45 && hour === 0) {
+    if (hour % 3 !== 0) {
+      hour = hour - (hour % 3);
+    }
+    if (hour < 2) {
       baseTime = '2300';
-    } else if (minute < 45) {
-      baseTime = (hour - 1) + '00';
+    } else if (minute < 15) {
+      baseTime = (hour - 3) + '00';
     } else {
       baseTime = hour + '00';
     }
