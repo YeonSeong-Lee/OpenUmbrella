@@ -2,8 +2,36 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.42);
+}
+
+.mat-toolbar {
+  background: #3f51b5;
+  min-width: 480px;
 }
 
 .side-bar {
   padding: 20px;
 }
+
+@media (max-width: 600px) {
+  .main-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.42);
+  }
+  .mat-toolbar {
+    background: #3f51b5;
+    min-width: 100vw;
+  }
+  .side-bar {
+    padding: 10px;
+  }
+}
+
+  
