@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EngineService } from '../engine.service';
 import { environment } from '../../environments/environment';
 
@@ -7,8 +7,10 @@ import { environment } from '../../environments/environment';
   templateUrl: './rain.component.html',
   styleUrls: ['./rain.component.css'],
 })
-export class RainComponent implements OnInit {
+export class RainComponent implements OnInit, OnDestroy {
   rainProbability:  number | undefined;
+
+  intervalId: number | undefined;
 
   constructor(private engine: EngineService) {}
 
@@ -59,7 +61,7 @@ export class RainComponent implements OnInit {
     if (delta > 1000) {
       delta = 100;
     }
-    setInterval(() => {
+    this.intervalId = window.setInterval(() => {
       const radius = Math.random() * window.innerHeight / 50 + 5;
       this.engine.addCircle(Math.random() * window.innerWidth, 0, radius, { restitution: 0.42, friction: 0.1, frictionAir: 0.01 });
       // rain probability 80% over -> add 2 raindrops per delta
@@ -95,5 +97,12 @@ export class RainComponent implements OnInit {
 
     baseTime = baseTime.padStart(4, '0');
     return baseTime;
+  }
+
+  ngOnDestroy(): void {
+    this.engine.ngOnDestroy();
+    if (this.intervalId) {
+      window.clearInterval(this.intervalId);
+    }
   }
 }
