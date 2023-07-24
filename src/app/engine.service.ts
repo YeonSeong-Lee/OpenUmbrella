@@ -106,9 +106,11 @@ export class EngineService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    Matter.Engine.clear(this.engine);
     Matter.Render.stop(this.render);
     Matter.Runner.stop(this.runner);
+    Matter.World.clear(this.engine.world, true);
+    Matter.Engine.clear(this.engine);
+    this.render.canvas.remove();
     window.removeEventListener('resize', this.updateByWindowSize.bind(this));
     window.removeEventListener('click', this.addForceByMouse.bind(this));
   }
