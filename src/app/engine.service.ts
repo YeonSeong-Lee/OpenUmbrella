@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import * as Matter from 'matter-js';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EngineService {
+export class EngineService implements OnDestroy {
   engine = Matter.Engine.create(
   );
 
@@ -85,18 +85,8 @@ export class EngineService {
   private addForceByMouse(element: MouseEvent) {
     const mousePosition = { x: element.clientX, y: element.clientY };
     const wind = mousePosition.x - window.innerWidth / 2;
-    // FIXME: more natural
     this.engine.gravity.x = wind / window.innerWidth * 0.7;
   }
-
-  percentX(percent: number) {
-    return Math.round(window.innerWidth * percent / 100);
-  }
-
-  percentY(percent: number) {
-    return Math.round(window.innerHeight * percent / 100);
-  }
-
 
   private init() {
     this.engine.world.bodies.forEach(body => {
@@ -110,7 +100,7 @@ export class EngineService {
     window.addEventListener('resize',
       this.updateByWindowSize.bind(this),
     );
-    window.addEventListener('mousemove',
+    window.addEventListener('click',
       this.addForceByMouse.bind(this),
     );
   }
@@ -120,6 +110,6 @@ export class EngineService {
     Matter.Render.stop(this.render);
     Matter.Runner.stop(this.runner);
     window.removeEventListener('resize', this.updateByWindowSize.bind(this));
-    window.removeEventListener('mousemove', this.addForceByMouse.bind(this));
+    window.removeEventListener('click', this.addForceByMouse.bind(this));
   }
 }
