@@ -29,7 +29,7 @@ export class RainComponent implements OnInit, OnDestroy {
           },
         },
       });
-    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin' });
+    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin', render: { visible: false } });
     const umbrella = this.engine.getBodyBtLabel('umbrella');
     const umbrellaPin = this.engine.getBodyBtLabel('umbrella-pin');
     if (umbrella && umbrellaPin) {
@@ -52,7 +52,6 @@ export class RainComponent implements OnInit, OnDestroy {
       .catch(error => console.error(error));
   }
 
-  // TODO: delte setInterval ID when component is destroyed
   private runRain(rainProbability: number) {
     let delta = 1000 / rainProbability;
     if (delta < 12.5) {
