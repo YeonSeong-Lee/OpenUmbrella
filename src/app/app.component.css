@@ -10,6 +10,9 @@
 .mat-toolbar {
   background: #3f51b5;
   min-width: 480px;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .side-bar {
