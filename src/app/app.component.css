@@ -18,6 +18,11 @@
   padding: 20px;
 }
 
+.mat-toolbar > a {
+  color: black;
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .main-container {
     height: 100%;
