@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./contributor.component.css'],
 })
 export class ContributorComponent {
-  contributors = ['jmaing', 'juha', 'jihokim2', 'seongyle', 'sokwon', 'hhwang', 'yukim'];
+  donators = ['jmaing', 'juha', 'jihokim2', 'seongyle', 'sokwon', 'hhwang', 'yukim'];
+
+  operators = ['seongyle', 'yonghyle', 'sunhwang', 'sooyokim', 'hhwang', 'wochae', 'seonhoki', 'jaewchoi', 'juha'];
 }
