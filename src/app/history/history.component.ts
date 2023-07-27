@@ -10,7 +10,7 @@ export class HistoryComponent implements OnInit {
   constructor(private historyService: HistoryService) {}
 
   // TODO: Add a interface for umbrellaHistory
-  statuses: any[] | undefined = ['대출', '반납'];
+  statuses: { id: number, status: string }[] | undefined;
 
   ngOnInit() {
     this.getStatuses();
