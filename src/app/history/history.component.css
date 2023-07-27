@@ -1,0 +1,45 @@
+a {
+    text-decoration: none;
+}
+h1 {
+    margin: 12px;
+}
+
+ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+ul {
+    max-width: 480px;
+}
+
+button {
+    min-width: 120px;
+    min-height: 50px;
+    text-align: center;
+    background: linear-gradient(to bottom right, #ffffff, #e6e6e6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+}
+
+button:hover {
+    background: linear-gradient(to bottom right, #e6e6e6, #ffffff);
+    cursor: pointer;
+}
+
+.possible {
+    background: linear-gradient(to bottom right, rgb(28, 182, 28), #e6e6e6);
+}
+
+.impossible {
+    background: linear-gradient(to bottom right, rgb(226, 144, 144), #e6e6e6);
+}
+
+#possible {
+    color: green
+}
+
+#impossible {
+    color: red
+}
