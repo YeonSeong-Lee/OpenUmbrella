@@ -29,7 +29,7 @@ export class QRService {
 
   private onScanSuccess(decodedText: string) {
     alert(`${decodedText}이 인식됨.\nQR 대출이 아직 준비중입니다. 7월 30일 출시 예정!`);
-    const umbrellaID = parseInt(decodedText.slice(decodedText.lastIndexOf('/') + 1), 10);
+    const umbrellaID = Number(decodedText.slice(decodedText.lastIndexOf('/') + 1));
     this.shareServie.LendOrReturnUmbrella(umbrellaID)
       .then(result => alert(result.message))
       .catch(error => alert(error.message));
