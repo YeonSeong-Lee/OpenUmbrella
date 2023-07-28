@@ -22,18 +22,18 @@ export class QRService {
     );
   }
 
-  public stopScan() {
-    this.html5QrcodeScanner.stop();
+  public async stopScan() {
+    await this.html5QrcodeScanner.stop();
     this.html5QrcodeScanner.clear();
   }
 
-  private onScanSuccess(decodedText: string) {
+  private async onScanSuccess(decodedText: string) {
     alert(`${decodedText}이 인식됨.\nQR 대출이 아직 준비중입니다. 7월 30일 출시 예정!`);
     const umbrellaID = Number(decodedText.slice(decodedText.lastIndexOf('/') + 1));
     this.shareServie.LendOrReturnUmbrella(umbrellaID)
       .then(result => alert(result.message))
       .catch(error => alert(error.message));
-    this.stopScan();
+    await this.stopScan();
   }
 }
 

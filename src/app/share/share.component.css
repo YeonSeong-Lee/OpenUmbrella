@@ -1,3 +1,12 @@
+.share-wrapper {
+    justify-content: center;
+    text-align: center;
+}
+
+.share-wrapper > h1 {
+    margin: 12px;
+}
+
 #reader {
     justify-content: center;
 }
