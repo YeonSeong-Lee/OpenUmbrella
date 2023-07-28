@@ -26,7 +26,7 @@ export class HistoryComponent implements OnInit {
     // });
     // TODO: remove this, this is for test
     this.statuses = [
-      { id: 1, status: '대출' },
+      { id: 1, status: '반납' },
       { id: 2, status: '반납' },
       { id: 3, status: '대출' },
       { id: 4, status: '반납' },
@@ -53,9 +53,9 @@ export class HistoryComponent implements OnInit {
       { id: 25, status: '대출' },
       { id: 26, status: '반납' },
       { id: 27, status: '대출' },
-      { id: 28, status: '반납' },
+      { id: 28, status: '대출' },
       { id: 29, status: '대출' },
-      { id: 30, status: '반납' },
+      { id: 30, status: '대출' },
       { id: 31, status: '대출' },
       { id: 32, status: '반납' },
       { id: 33, status: '대출' },

@@ -1,31 +1,36 @@
 a {
     text-decoration: none;
 }
-h1 {
-    margin: 12px;
-}
 
 ul li {
+    list-style: none;
     list-style-type: none;
     display: inline-block;
+    text-align: center;
 }
 
 ul {
-    max-width: 480px;
+    max-width: 414px;
+    padding-left: 0;
+    margin-top: 0;
 }
 
 button {
-    min-width: 120px;
-    min-height: 50px;
+    min-width: 138px;
+    min-height: 160px;
     text-align: center;
     background: linear-gradient(to bottom right, #ffffff, #e6e6e6);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 15px;
 }
 
 button:hover {
     background: linear-gradient(to bottom right, #e6e6e6, #ffffff);
     cursor: pointer;
+}
+
+.mat-icon {
+    /* font-size: 48px; */
+    margin: 0 0 12px 0;
 }
 
 .possible {
@@ -42,4 +47,11 @@ button:hover {
 
 #impossible {
     color: red
+}
+
+@media (max-width: 414px) {
+    button {
+        min-width: 50vw;
+        min-height: 40vw;
+    }
 }
