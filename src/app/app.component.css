@@ -8,7 +8,7 @@
 
 .mat-toolbar {
   background: #3f51b5;
-  min-width: 480px;
+  min-width: 414px;
   top: 0;
   width: 100%;
   overflow: hidden;
@@ -23,7 +23,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 414px) {
   .main-container {
     height: 100%;
     display: flex;
