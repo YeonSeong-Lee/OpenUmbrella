@@ -39,7 +39,6 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
       { name: 'jmaing', date: new Date(), status: '반납' },
       { name: 'seongyle', date: new Date(), status: '대출' },
       { name: 'susong', date: new Date(), status: '반납' },
-
     ];
   }
 
