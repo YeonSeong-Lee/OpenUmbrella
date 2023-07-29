@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { inject } from '@vercel/analytics';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'OpenUmbrella';
+
+  constructor() {
+    inject();
+  }
 }

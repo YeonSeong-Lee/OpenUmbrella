@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@vercel/analytics": "^1.0.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "html5-qrcode": "^2.3.8",
     "matter-js": "^0.19.0",

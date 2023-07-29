@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ShareModule } from './share/share.module';
 import { HistoryModule } from './history/history.module';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
