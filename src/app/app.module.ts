@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ShareModule } from './share/share.module';
 import { HistoryModule } from './history/history.module';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     ShareModule,
     HistoryModule,
+    NgxGoogleAnalyticsModule.forRoot('G-X5K9PQFDJH'),
   ],
   providers: [],
   bootstrap: [AppComponent],
