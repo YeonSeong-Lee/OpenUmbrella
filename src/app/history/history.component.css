@@ -51,7 +51,7 @@ button:hover {
 
 @media (max-width: 414px) {
     button {
-        min-width: 50vw;
-        min-height: 40vw;
+        min-width: 33.33333vw;
+        min-height: 42vw;
     }
 }
