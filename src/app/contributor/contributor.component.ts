@@ -9,4 +9,6 @@ export class ContributorComponent {
   donators = ['jmaing', 'juha', 'jihokim2', 'seongyle', 'sokwon', 'hhwang', 'yukim'];
 
   operators = ['seongyle', 'yonghyle', 'sunhwang', 'sooyokim', 'hhwang', 'wochae', 'seonhoki', 'jaewchoi', 'juha', 'jimin', 'sangmipa', 'junmoon'];
+
+  designers = ['junmoon'];
 }
