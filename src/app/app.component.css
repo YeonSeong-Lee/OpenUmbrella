@@ -35,7 +35,7 @@
 
 @media (max-width: 414px) {
   .main-container {
-    height: 100%;
+    height: calc(100vh - 48px);;
     display: flex;
     justify-content: start;
     flex-direction: column;
