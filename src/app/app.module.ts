@@ -5,6 +5,7 @@ import { ShareModule } from './share/share.module';
 import { HistoryModule } from './history/history.module';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HttpClientModule } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatToolbarModule,
+    MatTabsModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,

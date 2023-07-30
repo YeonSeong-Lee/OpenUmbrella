@@ -19,5 +19,15 @@
       <a mat-list-item routerLink="/history">History</a>
     </li>
   </mat-drawer>
-  <router-outlet></router-outlet>
+    <nav class="tab-nav" mat-tab-nav-bar headerPosition="below" [tabPanel]="tabPabel">
+      <a mat-tab-link *ngFor="let link of links"
+      (click)="activeLink = link"
+      [routerLink]="link.url"
+      [active]="activeLink == link">
+      <mat-icon>{{link.icon}}</mat-icon>
+    </a>
+    </nav>
+    <mat-tab-nav-panel #tabPabel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>  
 </mat-drawer-container>
