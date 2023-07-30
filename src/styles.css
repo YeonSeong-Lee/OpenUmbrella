@@ -20,5 +20,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: linear-gradient(45deg, #e6e6e6, #ffffff);
+}
+
+html {
+  background: linear-gradient(45deg, #e6e6e6, #cacaca);
 }
