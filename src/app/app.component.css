@@ -33,6 +33,10 @@
   background: linear-gradient(45deg, #e6e6e6, #ffffff);
 }
 
+.drawer {
+  width: 200px;
+}
+
 @media (max-width: 414px) {
   .main-container {
     height: calc(100vh - 48px);;
@@ -47,6 +51,10 @@
   }
   .side-bar {
     padding: 10px;
+  }
+
+  .drawer {
+    width: 42vw;
   }
 }
 
