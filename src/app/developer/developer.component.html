@@ -6,6 +6,8 @@
 <p>developer repo</p>
 <ul *ngFor="let repo of repos">
   <li>
-    <a href={{repo.url}}>{{repo.kind}}</a>
+    <address>
+      <a href={{repo.url}}>{{repo.kind}}</a>
+    </address>
   </li>
 </ul>
