@@ -4,6 +4,7 @@
   justify-self: start;
   flex-direction: column;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.42);
+  box-shadow: 0 20px 20px rgba(63, 81, 181, 0.22);
 }
 
 .mat-toolbar {
