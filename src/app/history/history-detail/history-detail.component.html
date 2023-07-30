@@ -1,14 +1,11 @@
 <h1>{{umbrellaID}}번 우산의 기록</h1>
 
 <div class="history-detail-wrapper">
-
     <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="42" #input>
     </mat-form-field>
-
     <table mat-table [dataSource]="dataSource" matSort>
-
         <!-- Name Column -->
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
@@ -35,6 +32,5 @@
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
     </table>
-
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>

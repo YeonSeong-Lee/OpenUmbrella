@@ -10,7 +10,7 @@ table {
     justify-content: center;
     text-align: center;
     max-width: 414px;
-    margin: 0 12px;
+    margin: 0;
 }
 
 .mat-mdc-form-field {
@@ -22,4 +22,3 @@ table {
     margin-left: 10px;
     margin-right: 10px;
 }
-
