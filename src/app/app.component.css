@@ -8,11 +8,12 @@
 }
 
 .mat-toolbar {
-  background: #3f51b5;
   min-width: 414px;
   top: 0;
   width: 100%;
   overflow: hidden;
+  justify-content: space-between;
+  background: linear-gradient(45deg, #e6e6e6, #ffffff);
 }
 
 .side-bar {
@@ -20,8 +21,8 @@
 }
 
 .mat-toolbar > a {
-  color: black;
   text-decoration: none;
+  color: #3f51b5;
 }
 
 .tab-nav {
@@ -46,7 +47,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.42);
   }
   .mat-toolbar {
-    background: #3f51b5;
     min-width: 100vw;
   }
   .side-bar {
