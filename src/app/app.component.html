@@ -5,19 +5,19 @@
     </button>
     <a href="/" >{{title}}</a>
   </mat-toolbar>
-  <mat-drawer #drawer mode="over">
-    <li>
-      <a mat-list-item routerLink="/share">대출 / 반납</a>
-    </li>
-    <li>
-      <a mat-list-item routerLink="/contributor">Contributor</a>
-    </li>
-    <li>
-      <a mat-list-item routerLink="/developer">Developer</a>
-    </li>
-    <li>
-      <a mat-list-item routerLink="/history">History</a>
-    </li>
+  <mat-drawer #drawer class="drawer" mode="over">
+      <a mat-list-item *ngFor="let link of links" [routerLink]="link.url">
+        <li>
+          <mat-icon>{{link.icon}}</mat-icon>
+          <span>{{link.displayName}}</span>
+        </li>
+      </a>
+      <a mat-list-item routerLink="/developer">
+        <li>
+          <mat-icon>code_blocks</mat-icon>
+          <span>Developer</span>
+        </li>
+      </a>
   </mat-drawer>
   <!-- TODO: inactive when no existed url -->
     <nav class="tab-nav" mat-tab-nav-bar [tabPanel]="tabPabel">
