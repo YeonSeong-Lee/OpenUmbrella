@@ -41,11 +41,11 @@ export class EngineService implements OnDestroy {
     Matter.World.add(this.engine.world, [constraint]);
   }
 
-  getBodyBtLabel(label: string) {
+  getBodyByLabel(label: string) {
     return this.engine.world.bodies.find(body => body.label === label);
   }
 
-  getconstraintByLabel(label: string) {
+  getConstraintByLabel(label: string) {
     return this.engine.world.constraints.find(constraint => {
       return constraint.label === label;
     });
@@ -61,15 +61,16 @@ export class EngineService implements OnDestroy {
   }
 
   private updateByWindowSize() {
-    const umbrella = this.getBodyBtLabel('umbrella');
+    Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
+    const umbrella = this.getBodyByLabel('umbrella');
     if (umbrella) {
       Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.65 });
     }
-    const umbrellaPin = this.getBodyBtLabel('umbrella-pin');
+    const umbrellaPin = this.getBodyByLabel('umbrella-pin');
     if (umbrellaPin) {
       Matter.Body.setPosition(umbrellaPin, { x: window.innerWidth / 2, y: window.innerHeight * 0.2 });
     }
-    const umbrellaConstraint = this.getconstraintByLabel('umberlla-constraint');
+    const umbrellaConstraint = this.getConstraintByLabel('umberlla-constraint');
     if (umbrellaConstraint) {
       umbrellaConstraint.length = window.innerHeight * 0.42;
     }
@@ -79,7 +80,6 @@ export class EngineService implements OnDestroy {
     this.render.options.height = window.innerHeight;
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
-    Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
   }
 
   private addCircleInMousePoint(element: MouseEvent) {

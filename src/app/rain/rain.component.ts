@@ -30,8 +30,8 @@ export class RainComponent implements OnInit, OnDestroy {
         },
       });
     this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin', render: { visible: false } });
-    const umbrella = this.engine.getBodyBtLabel('umbrella');
-    const umbrellaPin = this.engine.getBodyBtLabel('umbrella-pin');
+    const umbrella = this.engine.getBodyByLabel('umbrella');
+    const umbrellaPin = this.engine.getBodyByLabel('umbrella-pin');
     if (umbrella && umbrellaPin) {
       this.engine.addConstraint(umbrella, umbrellaPin, { length: window.innerHeight * 0.42, label: 'umberlla-constraint', render: { visible: false } });
     }
