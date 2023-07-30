@@ -35,15 +35,20 @@ export class RainComponent implements OnInit, OnDestroy {
     if (umbrella && umbrellaPin) {
       this.engine.addConstraint(umbrella, umbrellaPin, { length: window.innerHeight * 0.42, label: 'umberlla-constraint', render: { visible: false } });
     }
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden' && this.intervalId) {
+        window.clearInterval(this.intervalId);
+      } else {
+        this.runRain(this.rainProbability || 0);
+      }
+    });
     this.engine.run();
   }
 
   private getCurrentGaepoDongWeather() {
     const baseDate = this.getBaseDate();
     const baseTime = this.getBaseTime();
-    console.log(baseDate, baseTime);
     const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=62&ny=25`;
-    console.log(url);
     fetch(url)
       .then(response => response.json())
       .then(data => data.response.body?.items.item.filter((item: { category: string }) => item.category === 'POP')[0].fcstValue)
@@ -53,6 +58,9 @@ export class RainComponent implements OnInit, OnDestroy {
   }
 
   private runRain(rainProbability: number) {
+    if (document.visibilityState === 'hidden') {
+      return;
+    }
     let delta = 1000 / rainProbability;
     if (delta < 12.5) {
       delta = 12.5;
