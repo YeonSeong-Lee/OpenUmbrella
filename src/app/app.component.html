@@ -23,7 +23,6 @@
       </a>
     </mat-list>
   </mat-drawer>
-  <!-- TODO: inactive when no existed url -->
     <nav class="tab-nav" mat-tab-nav-bar [tabPanel]="tabPabel">
       <a mat-tab-link *ngFor="let link of links"
       (click)="onSelectActiveLink(link.url)"

@@ -32,6 +32,6 @@ export class AppComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.activeLink = this.links[1].url;
+    this.activeLink = window.location.pathname.split('/')[1];
   }
 }
