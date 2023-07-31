@@ -6,18 +6,18 @@
     <a href="/" >{{title}}</a>
   </mat-toolbar>
   <mat-drawer #drawer class="drawer" mode="over">
-      <a mat-list-item *ngFor="let link of links" [routerLink]="link.url">
-        <li>
-          <mat-icon>{{link.icon}}</mat-icon>
-          <span>{{link.displayName}}</span>
-        </li>
+    <mat-list>
+      <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of links" [routerLink]="link.url">
+          <mat-icon id="drawer-icon">{{link.icon}}</mat-icon>
+          <span id="drawer-disply">{{link.displayName}}</span>
+          <mat-divider [inset]="true"></mat-divider>
       </a>
-      <a mat-list-item routerLink="/developer">
-        <li>
-          <mat-icon>code_blocks</mat-icon>
-          <span>Developer</span>
-        </li>
+      <mat-divider></mat-divider>
+      <a id="drawer-disply-wrapper" mat-list-item routerLink="developer">
+        <mat-icon id="drawer-icon">code</mat-icon>
+        <span id="drawer-disply">Developer</span>
       </a>
+    </mat-list>
   </mat-drawer>
   <!-- TODO: inactive when no existed url -->
     <nav class="tab-nav" mat-tab-nav-bar [tabPanel]="tabPabel">

@@ -1,3 +1,7 @@
+span {
+  all: unset;
+}
+
 .main-container {
   height: calc(100vh - 48px);
   display: flex;
@@ -37,6 +41,11 @@
 .drawer {
   width: 200px;
 }
+
+#drawer-icon {
+  margin-right: 10px;
+}
+
 
 @media (max-width: 414px) {
   .main-container {
