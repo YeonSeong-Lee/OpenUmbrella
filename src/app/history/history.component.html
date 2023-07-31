@@ -3,16 +3,18 @@
         <button class="possible" *ngIf="status.status === '대출'" routerLink="/history/{{status.id}}">
             <mat-icon id="possible">umbrella</mat-icon>
                 <div >
-                    #{{status.id}}
-                    대출가능
-                </div>
-               
+                    <div>
+                        #{{status.id}} in cluster
+                    </div>
+                </div>               
         </button>
         <button class="impossible" *ngIf="status.status === '반납'" routerLink="/history/{{status.id}}">
             <mat-icon id="impossible">beach_access</mat-icon>
-                <div >
-                    #{{status.id}}
-                    사용중
+                <div>
+                    <div>
+                        #{{status.id}}
+                        {{status.last_user}}
+                    </div>
                 </div>
         </button>
     </li>
