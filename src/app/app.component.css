@@ -51,7 +51,7 @@ span {
   .main-container {
     height: calc(100vh - 48px);;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.42);
   }
