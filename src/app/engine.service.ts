@@ -5,34 +5,33 @@ import * as Matter from 'matter-js';
   providedIn: 'root',
 })
 export class EngineService implements OnDestroy {
-  engine = Matter.Engine.create(
-  );
 
-  render = Matter.Render.create({
-    element: document.body,
-    engine: this.engine,
-    options: {
-      background: 'transparent',
-      wireframes: false,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      pixelRatio: window.devicePixelRatio,
-    },
-  });
+  private engine: Matter.Engine | undefined;
 
-  runner = Matter.Runner.create();
+  private render: Matter.Render | undefined;
+
+  private runner: Matter.Runner | undefined;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private clickHandler: ((this: Window, ev: MouseEvent) => any) | void | undefined;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private resizeHandler: ((this: Window, ev: UIEvent) => any) | void | undefined;
 
   addRect(x: number, y: number, width: number, height: number, options?: Matter.IBodyDefinition) {
+    if (!this.engine) return;
     const rect = Matter.Bodies.rectangle(x, y, width, height, options);
     Matter.World.add(this.engine.world, [rect]);
   }
 
   addCircle(x: number, y: number, radius: number, options?: Matter.IBodyDefinition) {
+    if (!this.engine) return;
     const circle = Matter.Bodies.circle(x, y, radius, options);
     Matter.World.add(this.engine.world, [circle]);
   }
 
   addConstraint(bodyA: Matter.Body, bodyB: Matter.Body, options?: Matter.IConstraintDefinition) {
+    if (!this.engine) return;
     const constraint = Matter.Constraint.create({
       bodyA: bodyA,
       bodyB: bodyB,
@@ -42,10 +41,12 @@ export class EngineService implements OnDestroy {
   }
 
   getBodyByLabel(label: string) {
+    if (!this.engine) return;
     return this.engine.world.bodies.find(body => body.label === label);
   }
 
   getConstraintByLabel(label: string) {
+    if (!this.engine) return;
     return this.engine.world.constraints.find(constraint => {
       return constraint.label === label;
     });
@@ -56,11 +57,13 @@ export class EngineService implements OnDestroy {
   */
   run() {
     this.init();
+    if (!this.engine || !this.render || !this.runner) return;
     Matter.Render.run(this.render);
     Matter.Runner.run(this.runner, this.engine);
   }
 
   private updateByWindowSize() {
+    if (!this.render) return;
     Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
     const umbrella = this.getBodyByLabel('umbrella');
     if (umbrella) {
@@ -89,27 +92,46 @@ export class EngineService implements OnDestroy {
   }
 
   private init() {
+    this.engine = Matter.Engine.create(
+    );
+    
+    this.render = Matter.Render.create({
+      element: document.body,
+      engine: this.engine,
+      options: {
+        background: 'transparent',
+        wireframes: false,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        pixelRatio: window.devicePixelRatio,
+      },
+    });
+    
+    this.runner = Matter.Runner.create();
+    
+
     this.engine.world.bodies.forEach(body => {
       body.frictionAir = 0;
       body.friction = 0;
       Matter.Body.setInertia(body, Infinity);
     });
 
-    window.addEventListener('resize',
-      this.updateByWindowSize.bind(this),
-    );
-    window.addEventListener('click',
-      this.addCircleInMousePoint.bind(this),
-    );
+    this.resizeHandler = this.updateByWindowSize.bind(this);
+    window.addEventListener('resize', this.resizeHandler);
+    this.clickHandler = this.addCircleInMousePoint.bind(this);
+    window.addEventListener('click', this.clickHandler);
   }
 
   ngOnDestroy(): void {
+    if (!this.engine || !this.render || !this.runner) return;
     Matter.Render.stop(this.render);
     Matter.Runner.stop(this.runner);
     Matter.World.clear(this.engine.world, true);
     Matter.Engine.clear(this.engine);
     this.render.canvas.remove();
-    window.removeEventListener('resize', this.updateByWindowSize.bind(this));
-    window.removeEventListener('click', this.addCircleInMousePoint.bind(this));
+    console.log(this.resizeHandler, this.clickHandler);
+    if (!this.resizeHandler || !this.clickHandler) return;
+    window.removeEventListener('resize', this.resizeHandler);
+    console.log(window.removeEventListener('click', this.clickHandler));
   }
 }
