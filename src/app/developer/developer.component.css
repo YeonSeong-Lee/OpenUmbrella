@@ -1,0 +1,112 @@
+/* Style the header elements (h1) */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Style the repository list */
+.repos-list {
+  list-style-type: none;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.repos-list a {
+  color: #3f51b5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.repos-list a:hover {
+  animation: alternate 0.2s ease;
+}
+
+.repos-list li {
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.repos-list {
+  position: relative;
+  overflow: hidden;
+}
+
+.repos-list:hover {
+  background-color: #f2f2f2;
+}
+
+.repos-list::before,
+.repos-list::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(252, 255, 88, 0.8) 1%, transparent 5%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Animation for glitter particles */
+.repos-list::before {
+  animation: glitter1 1s infinite;
+}
+
+.repos-list::after {
+  animation: glitter2 1s infinite;
+}
+
+/* Keyframes for glitter animations */
+@keyframes glitter1 {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes glitter2 {
+  0%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}
+
+#give-star-section {
+  text-align: center;
+}
+
+/* Add media query for responsiveness */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .developers-list,
+  .repos-list {
+    padding: 5px;
+  }
+
+  #give-star-section {
+    padding: 10px;
+  }
+}

@@ -6,9 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./developer.component.css'],
 })
 export class DeveloperComponent {
-  developers = ['seongyle', 'susong'];
-
-  repos = [ { 'kind': 'frontend', 'url': 'https://github.com/YeonSeong-Lee/OpenUmbrella' },
-    { 'kind': 'backend', 'url': 'https://github.com/SeungWoonSong/openUmbrella' },
+  repos = [
+    { 'kind': 'frontend', 'url': 'https://github.com/YeonSeong-Lee/OpenUmbrella', 'developer': 'seongyle' },
+    { 'kind': 'backend', 'url': 'https://github.com/SeungWoonSong/openUmbrella', 'developer': 'susong' },
   ];
 }

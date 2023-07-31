@@ -1,13 +1,9 @@
-<p>developers</p>
-<ul *ngFor="let name of developers">
-  <li>{{name}}</li>
+<h1>Repos:</h1>
+<ul class="repos-list" *ngFor="let repo of repos">
+  <a href={{repo.url}}>
+    <li>
+      `{{repo.kind}}` developed by {{repo.developer}}
+    </li>
+  </a>
 </ul>
-
-<p>developer repo</p>
-<ul *ngFor="let repo of repos">
-  <li>
-    <address>
-      <a href={{repo.url}}>{{repo.kind}}</a>
-    </address>
-  </li>
-</ul>
+<p id="give-star-section">Don't forget to give them a ⭐ on GitHub!</p>
