@@ -10,9 +10,16 @@ import { inject } from '@vercel/analytics';
 export class AppComponent implements OnInit { 
   title = 'OpenUmbrella';
 
-  links = [ { displayName: '우산현황', url: 'history', icon: 'beach_access' }, 
+  links = [
+    { displayName: '우산현황', url: 'history', icon: 'beach_access' }, 
     { displayName: '대출/반납', url: 'share', icon: 'qr_code_scanner' },
-    { displayName: '기여자', url: 'contributor', icon: 'group' }];
+    { displayName: '기여자', url: 'contributor', icon: 'group' },
+  ];
+
+  noImportantLinks = [ 
+    { displayName: '예보(beta)', url: 'rain', icon: 'cloud' },
+    { displayName: '개발자', url: 'developer', icon: 'code' }, 
+  ];
 
   activeLink: string | undefined;
 

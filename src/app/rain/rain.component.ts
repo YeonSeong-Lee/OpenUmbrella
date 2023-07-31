@@ -16,6 +16,7 @@ export class RainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getCurrentGaepoDongWeather();
+    this.engine.run();
     this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, 150,
       {
         isStatic: false,
@@ -42,7 +43,6 @@ export class RainComponent implements OnInit, OnDestroy {
         this.runRain(this.rainProbability || 0);
       }
     });
-    this.engine.run();
   }
 
   private getCurrentGaepoDongWeather() {

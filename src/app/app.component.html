@@ -15,9 +15,11 @@
           <mat-divider [inset]="true"></mat-divider>
       </a>
       <mat-divider></mat-divider>
-      <a id="drawer-disply-wrapper" mat-list-item routerLink="developer"   (click)="onSelectActiveLink('developer')">
-        <mat-icon id="drawer-icon">code</mat-icon>
-        <span id="drawer-disply">Developer</span>
+      <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of noImportantLinks"
+      (click)="onSelectActiveLink(link.url)"
+      [routerLink]="link.url">
+        <mat-icon id="drawer-icon">{{link.icon}}</mat-icon>
+        <span id="drawer-disply">{{link.displayName}}</span>
       </a>
     </mat-list>
   </mat-drawer>
