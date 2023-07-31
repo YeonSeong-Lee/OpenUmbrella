@@ -7,13 +7,15 @@
   </mat-toolbar>
   <mat-drawer #drawer class="drawer" mode="over">
     <mat-list>
-      <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of links" [routerLink]="link.url">
+      <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of links"
+      (click)="onSelectActiveLink(link.url)"
+      [routerLink]="link.url">
           <mat-icon id="drawer-icon">{{link.icon}}</mat-icon>
           <span id="drawer-disply">{{link.displayName}}</span>
           <mat-divider [inset]="true"></mat-divider>
       </a>
       <mat-divider></mat-divider>
-      <a id="drawer-disply-wrapper" mat-list-item routerLink="developer">
+      <a id="drawer-disply-wrapper" mat-list-item routerLink="developer"   (click)="onSelectActiveLink('developer')">
         <mat-icon id="drawer-icon">code</mat-icon>
         <span id="drawer-disply">Developer</span>
       </a>
@@ -22,9 +24,9 @@
   <!-- TODO: inactive when no existed url -->
     <nav class="tab-nav" mat-tab-nav-bar [tabPanel]="tabPabel">
       <a mat-tab-link *ngFor="let link of links"
-      (click)="activeLink = link"
+      (click)="onSelectActiveLink(link.url)"
       [routerLink]="link.url"
-      [active]="activeLink == link">
+      [active]="activeLink == link.url ">
       <mat-icon>{{link.icon}}</mat-icon>
     </a>
     </nav>
