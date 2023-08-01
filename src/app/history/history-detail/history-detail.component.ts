@@ -4,10 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 
-export interface UmbrellaHistory {
-  name: string;
-  date: Date;
-  status: string;
+interface UmbrellaDeatailHistory {
+  user_name: string;
+  borrowed_at: string;
+  returned_at: string | null;
 }
 
 @Component({
@@ -18,27 +18,28 @@ export interface UmbrellaHistory {
 export class HistoryDetailComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute) {}
 
-  // TODO: Add a interface for umbrellaHistory
   umbrellaID: number | undefined;
 
-  umbrellaHistory: UmbrellaHistory[] = [];
+  umbrellaDetailHistory: UmbrellaDeatailHistory[] = [];
 
-  displayedColumns: string[] = ['name', 'date', 'status'];
+  displayedColumns: string[] = ['user_name', 'borrowed_at', 'returned_at'];
 
-  dataSource!: MatTableDataSource<UmbrellaHistory>;
+  dataSource!: MatTableDataSource<UmbrellaDeatailHistory>;
 
   getUmbrellaHistory() {
     //TODO : get umbrella history by umbrellaID from server
     // TEST: mock data
-    this.umbrellaHistory = [
-      { name: 'seongyle', date: new Date(), status: '대출' },
-      { name: 'susong', date: new Date(), status: '반납' },
-      { name: 'jmaing', date: new Date(), status: '대출' },
-      { name: 'seongyle', date: new Date(), status: '반납' },
-      { name: 'susong', date: new Date(), status: '대출' },
-      { name: 'jmaing', date: new Date(), status: '반납' },
-      { name: 'seongyle', date: new Date(), status: '대출' },
-      { name: 'susong', date: new Date(), status: '반납' },
+    this.umbrellaDetailHistory = [
+      {
+        user_name: 'susong',
+        borrowed_at: '2023-08-01T22:40:42',
+        returned_at: '2023-08-01T22:43:30',
+      },
+      {
+        user_name: 'susong',
+        borrowed_at: '2023-08-01T22:51:01',
+        returned_at: null,
+      },
     ];
   }
 
@@ -50,7 +51,7 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.umbrellaID = Number(this.route.snapshot.paramMap.get('id'));
     this.getUmbrellaHistory();
-    this.dataSource = new MatTableDataSource(this.umbrellaHistory);
+    this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
   }
 
   applyFilter(event: Event) {

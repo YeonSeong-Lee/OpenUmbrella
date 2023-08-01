@@ -1,4 +1,4 @@
-<h1>{{umbrellaID}}번 우산의 기록</h1>
+<h1>#{{umbrellaID}} HISTORY</h1>
 
 <div class="history-detail-wrapper">
     <mat-form-field>
@@ -6,22 +6,19 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="42" #input>
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort>
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        <ng-container matColumnDef="user_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> user_name </th>
+            <td mat-cell *matCellDef="let row"> {{row?.user_name}} </td>
         </ng-container>
 
-        <!-- Date Column -->
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-            <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+        <ng-container matColumnDef="borrowed_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> borrowed_at </th>
+            <td mat-cell *matCellDef="let row"> {{row?.borrowed_at}} </td>
         </ng-container>
 
-        <!-- Status Column -->
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+        <ng-container matColumnDef="returned_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> returned_at </th>
+            <td mat-cell *matCellDef="let row"> {{row?.returned_at ?? 'X'}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
