@@ -1,3 +1,77 @@
-h2 {
-    padding-left: 12px;
-}
+  .container {
+      max-width: 414px;
+      margin: 0 auto;
+      padding: 20px;
+  }
+
+  h2 {
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 15px;
+      color: #007bff;
+      padding-bottom: 5px;
+      /* Add a line underneath the header */
+      border-bottom: 2px solid #007bff;
+  }
+
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 414px;
+  }
+  
+  li {
+    flex: 0 0 calc(100% / 12);
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 414px;
+  }
+  
+  /* Hover slider animation */
+  .swipe-list li {
+    animation: slide 4s linear infinite;
+  }
+
+  .rotate-list:hover li {
+    animation: rotate 1s linear infinite;
+  }
+
+  /* Keyframes for the slider animation */
+  @keyframes slide {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    33.33% {
+      transform: translateX(-100%);
+    }
+    66.66% {
+      transform: translateX(-200%);
+    }
+    88.88% {
+      transform: translateX(-300%);
+    }
+  }
+
+  @keyframes rotate {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    33.33% {
+      transform: rotate(90deg);
+    }
+    66.66% {
+      transform: rotate(180deg);
+    }
+    88.88% {
+      transform: rotate(270deg);
+    }
+  }
