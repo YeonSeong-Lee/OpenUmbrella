@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class DeveloperComponent {
   repos = [
     { 'kind': 'frontend', 'url': 'https://github.com/YeonSeong-Lee/OpenUmbrella', 'developer': 'seongyle' },
-    { 'kind': 'backend', 'url': 'https://github.com/SeungWoonSong/openUmbrella', 'developer': 'susong' },
+    { 'kind': 'backend', 'url': 'https://github.com/SeungWoonSong/Umbrella_FAST_API', 'developer': 'susong' },
   ];
 }
