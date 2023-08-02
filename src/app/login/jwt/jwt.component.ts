@@ -17,8 +17,7 @@ export class JwtComponent implements OnInit {
     const jwtToken = this.route.snapshot.queryParamMap.get('jwt_token');
     if (jwtToken) {
       document.cookie = `jwt_token=${jwtToken}`;
-      console.log('success, jwt_token: ', jwtToken);
-      window.location.href = '/share';
     }
+    window.location.href = '/share';
   }
 }
