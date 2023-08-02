@@ -8,6 +8,7 @@ import { HistoryComponent } from './history/history.component';
 import { HistoryDetailComponent } from './history/history-detail/history-detail.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth/auth.guard';
+import { JwtComponent } from './login/jwt/jwt.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/rain', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'history/:id', component: HistoryDetailComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'jwt', component: JwtComponent },
   { path: '**', redirectTo: '/rain' },
 ];
 
