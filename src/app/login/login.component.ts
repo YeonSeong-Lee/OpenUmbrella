@@ -31,6 +31,7 @@ export class LoginComponent {
         localStorage.setItem('jwt', data.jwt);
         window.location.href = '/';
       });
-    }
+    },
+    ); 
   }
 }
