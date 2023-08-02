@@ -14,7 +14,7 @@ export class JwtComponent implements OnInit {
   }
 
   getJwt() {
-    const jwtToken = this.route.snapshot.paramMap.get('jwt_token');
+    const jwtToken = this.route.snapshot.queryParamMap.get('jwt_token');
     if (jwtToken) {
       document.cookie = `jwt_token=${jwtToken}`;
       console.log('success, jwt_token: ', jwtToken);
