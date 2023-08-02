@@ -1,6 +1,6 @@
 <ul>
     <li *ngFor="let status of statuses">
-        <button class="possible" *ngIf="status.status === '대출'" routerLink="/history/{{status.id}}">
+        <button class="possible" *ngIf="status.status === 'available'" routerLink="/history/{{status.id}}">
             <mat-icon id="possible">umbrella</mat-icon>
                 <div >
                     <div>
@@ -8,12 +8,12 @@
                     </div>
                 </div>               
         </button>
-        <button class="impossible" *ngIf="status.status === '반납'" routerLink="/history/{{status.id}}">
+        <button class="impossible" *ngIf="status.status === 'borrowed'" routerLink="/history/{{status.id}}">
             <mat-icon id="impossible">beach_access</mat-icon>
                 <div>
                     <div>
                         #{{status.id}}
-                        {{status.last_user}}
+                        {{status.owner_name}}
                     </div>
                 </div>
         </button>

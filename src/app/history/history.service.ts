@@ -9,17 +9,20 @@ export class HistoryService {
   constructor(private http: HttpClient) {}
 
   // TODO: add logger
+
+  // set cors
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
   };
 
   getHistories() {
-    // return this.http.get(environment.api + "/history");
-    return ['대출/반납기록'];
+    return this.http.get(environment.api + '/umbrellas/' + '?skip=0&limit=50', this.httpOptions);
   }
 
   getHistory(id: number) {
-    return this.http.get(environment.api + '/history/' + id);
-    // return "대출/반납기록 상세";
+    // return this.http.get(environment.api + '/history/' + id);
+    return '대출/반납기록 상세';
   }
 }
