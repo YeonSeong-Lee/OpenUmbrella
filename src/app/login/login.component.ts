@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  auth_url: string | undefined;
+
   headerOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -18,9 +20,17 @@ export class LoginComponent {
       ...this.headerOptions,
     }).then((res) => {
       res.json().then((data) => {
-        window.location.href = data.auth_url;
+        this.auth_url = data.auth_url;
       });
     },
     );
-  }   
+    if (!this.auth_url) return;
+    fetch(this.auth_url).then((res) => {
+      res.json().then((data) => {
+        console.log(data, 'test');
+        localStorage.setItem('jwt', data.jwt);
+        window.location.href = '/';
+      });
+    }
+  }
 }
