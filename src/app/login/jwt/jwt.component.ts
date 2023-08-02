@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jwt',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jwt.component.css'],
 })
 export class JwtComponent implements OnInit {  
+  constructor(private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.getJwt();
   }
 
   getJwt() {
-    console.log('getJwt');
+    const jwtToken = this.route.snapshot.paramMap.get('jwt_token');
+    if (jwtToken) {
+      document.cookie = `jwt_token=${jwtToken}`;
+      window.location.href = '/share';
+    }
   }
 }
