@@ -64,7 +64,6 @@ export class EngineService implements OnDestroy {
 
   private updateByWindowSize() {
     if (!this.render) return;
-    Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
     const umbrella = this.getBodyByLabel('umbrella');
     if (umbrella) {
       Matter.Body.setPosition(umbrella, { x: window.innerWidth / 2, y: window.innerHeight * 0.65 });
@@ -83,6 +82,7 @@ export class EngineService implements OnDestroy {
     this.render.options.height = window.innerHeight;
     this.render.canvas.width = window.innerWidth;
     this.render.canvas.height = window.innerHeight;
+    Matter.Render.setPixelRatio(this.render, window.devicePixelRatio);
   }
 
   private addCircleInMousePoint(element: MouseEvent) {
@@ -132,6 +132,6 @@ export class EngineService implements OnDestroy {
     console.log(this.resizeHandler, this.clickHandler);
     if (!this.resizeHandler || !this.clickHandler) return;
     window.removeEventListener('resize', this.resizeHandler);
-    console.log(window.removeEventListener('click', this.clickHandler));
+    window.removeEventListener('click', this.clickHandler);
   }
 }

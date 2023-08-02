@@ -17,7 +17,7 @@ export class RainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCurrentGaepoDongWeather();
     this.engine.run();
-    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, 150,
+    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, window.innerWidth > 414 ? 100 :  window.innerWidth * 0.22,
       {
         isStatic: false,
         restitution: 0.42,
@@ -25,12 +25,12 @@ export class RainComponent implements OnInit, OnDestroy {
         render: {
           sprite: {
             texture: 'assets/umbrella.svg',
-            xScale: 2.1,
-            yScale: 2.3,
+            xScale: 1.3,
+            yScale: 1.5,
           },
         },
       });
-    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin', render: { visible: false } });
+    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.2, 1, { isStatic: true, label: 'umbrella-pin', render: { visible: false }, isSensor: true });
     const umbrella = this.engine.getBodyByLabel('umbrella');
     const umbrellaPin = this.engine.getBodyByLabel('umbrella-pin');
     if (umbrella && umbrellaPin) {
