@@ -31,7 +31,6 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
     this.umbrellaID = Number(this.route.snapshot.paramMap.get('id'));
     this.historyService.getHistory(this.umbrellaID).subscribe((data) => {
       this.umbrellaDetailHistory = data as UmbrellaDeatailHistory[];
-      console.log(data);
       this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
     });
   }
