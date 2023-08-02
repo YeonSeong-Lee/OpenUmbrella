@@ -22,6 +22,6 @@ export class HistoryService {
   }
 
   getHistory(id: number) {
-    return this.http.get(environment.api + '/umbrellas-history-id/' + id, this.httpOptions);
+    return this.http.get(environment.api + '/umbrella-history-id/' + id, this.httpOptions);
   }
 }
