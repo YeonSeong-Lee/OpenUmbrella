@@ -10,7 +10,7 @@ export class QRService {
 
   private html5QrcodeScanner!: Html5Qrcode;
 
-  private config = { fps: 100, qrbox: 300 };
+  private config = { fps: 1000, qrbox: 300 };
 
   public startScan() {
     this.html5QrcodeScanner = new Html5Qrcode('reader');
@@ -28,12 +28,9 @@ export class QRService {
   }
 
   private async onScanSuccess(decodedText: string) {
-    alert(`${decodedText}이 인식됨.\nQR 대출이 아직 준비중입니다. 7월 30일 출시 예정!`);
-    const umbrellaID = Number(decodedText.slice(decodedText.lastIndexOf('/') + 1));
-    this.shareServie.LendOrReturnUmbrella(umbrellaID)
-      .then(result => alert(result.message))
-      .catch(error => alert(error.message));
     await this.stopScan();
+    const umbrellaID = Number(decodedText.slice(decodedText.lastIndexOf('/') + 1));
+    await this.shareServie.LendOrReturnUmbrella(umbrellaID);
   }
 }
 
