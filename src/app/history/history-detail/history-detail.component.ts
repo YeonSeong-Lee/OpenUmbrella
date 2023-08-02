@@ -31,6 +31,12 @@ export class HistoryDetailComponent implements OnInit {
     this.umbrellaID = Number(this.route.snapshot.paramMap.get('id'));
     this.historyService.getHistory(this.umbrellaID).subscribe((data) => {
       this.umbrellaDetailHistory = data as UmbrellaDeatailHistory[];
+      this.umbrellaDetailHistory.forEach((element) => {
+        element.borrowed_at = new Date(element.borrowed_at).toLocaleString('ko-KR');
+        if (element.returned_at) {
+          element.returned_at = new Date(element.returned_at).toLocaleString('ko-KR');
+        }
+      });          
       this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
