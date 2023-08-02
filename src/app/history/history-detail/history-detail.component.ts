@@ -1,4 +1,4 @@
-import { AfterViewInit, ViewChild, Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,7 +16,7 @@ interface UmbrellaDeatailHistory {
   templateUrl: './history-detail.component.html',
   styleUrls: ['./history-detail.component.css'],
 })
-export class HistoryDetailComponent implements OnInit, AfterViewInit {
+export class HistoryDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private historyService: HistoryService) {}
 
   umbrellaID: number | undefined;
@@ -32,6 +32,8 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
     this.historyService.getHistory(this.umbrellaID).subscribe((data) => {
       this.umbrellaDetailHistory = data as UmbrellaDeatailHistory[];
       this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -52,11 +54,5 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-  
-  ngAfterViewInit() {
-    if (!this.dataSource) return;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 }
