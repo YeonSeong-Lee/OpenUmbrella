@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { HistoryService } from '../history.service';
 
 interface UmbrellaDeatailHistory {
   user_name: string;
@@ -16,7 +17,7 @@ interface UmbrellaDeatailHistory {
   styleUrls: ['./history-detail.component.css'],
 })
 export class HistoryDetailComponent implements OnInit, AfterViewInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private historyService: HistoryService) {}
 
   umbrellaID: number | undefined;
 
@@ -27,20 +28,12 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<UmbrellaDeatailHistory>;
 
   getUmbrellaHistory() {
-    //TODO : get umbrella history by umbrellaID from server
-    // TEST: mock data
-    this.umbrellaDetailHistory = [
-      {
-        user_name: 'susong',
-        borrowed_at: '2023-08-01T22:40:42',
-        returned_at: '2023-08-01T22:43:30',
-      },
-      {
-        user_name: 'susong',
-        borrowed_at: '2023-08-01T22:51:01',
-        returned_at: null,
-      },
-    ];
+    this.umbrellaID = Number(this.route.snapshot.paramMap.get('id'));
+    this.historyService.getHistory(this.umbrellaID).subscribe((data) => {
+      this.umbrellaDetailHistory = data as UmbrellaDeatailHistory[];
+      console.log(data);
+      this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
+    });
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,9 +42,7 @@ export class HistoryDetailComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.umbrellaID = Number(this.route.snapshot.paramMap.get('id'));
     this.getUmbrellaHistory();
-    this.dataSource = new MatTableDataSource(this.umbrellaDetailHistory);
   }
 
   applyFilter(event: Event) {

@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
     RainComponent,
     DeveloperComponent,
     ContributorComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

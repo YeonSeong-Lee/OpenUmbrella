@@ -22,7 +22,6 @@ export class HistoryService {
   }
 
   getHistory(id: number) {
-    // return this.http.get(environment.api + '/history/' + id);
-    return '대출/반납기록 상세';
+    return this.http.get(environment.api + '/umbrellas-history-id/' + id, this.httpOptions);
   }
 }

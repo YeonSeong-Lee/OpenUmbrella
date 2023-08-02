@@ -6,6 +6,8 @@ import { ContributorComponent } from './contributor/contributor.component';
 import { ShareComponent } from './share/share.component';
 import { HistoryComponent } from './history/history.component';
 import { HistoryDetailComponent } from './history/history-detail/history-detail.component';
+import { LoginComponent } from './login/login.component';
+import { authGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/rain', pathMatch: 'full' },
@@ -13,9 +15,10 @@ const routes: Routes = [
   { path: 'developer', component: DeveloperComponent },
   { path: 'contributor', component: ContributorComponent },
   { path: 'share/:id', component: ShareComponent },
-  { path: 'share', component: ShareComponent },
+  { path: 'share', component: ShareComponent, canActivate: [authGuard] },
   { path: 'history', component: HistoryComponent },
   { path: 'history/:id', component: HistoryDetailComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/rain' },
 ];
 
