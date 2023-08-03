@@ -96,7 +96,7 @@ export class EngineService implements OnDestroy {
     );
     
     this.render = Matter.Render.create({
-      element: document.body,
+      canvas: document.getElementById('rain-scene') as HTMLCanvasElement,
       engine: this.engine,
       options: {
         background: 'transparent',
