@@ -21,6 +21,8 @@ ul {
 }
 
 button {
+  margin: 0;
+  padding: 0;
   min-width: 138px;
   min-height: 160px;
   text-align: center;
@@ -36,7 +38,6 @@ button:hover {
   background: linear-gradient(to bottom right, #e6e6e6, #ffffff);
   cursor: pointer;
   transform: scale(1.05);
-  /* Slight scale-up on hover */
 }
 
 .mat-icon {
