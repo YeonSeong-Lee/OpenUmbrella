@@ -52,6 +52,11 @@ export class EngineService implements OnDestroy {
     });
   }
 
+  setAngle(body: Matter.Body, angle: number) {
+    if (!this.engine) return;
+    Matter.Body.setAngle(body, angle);
+  }
+
   /*
   @description run the engine
   */
@@ -108,12 +113,20 @@ export class EngineService implements OnDestroy {
     });
     
     this.runner = Matter.Runner.create();
-    
 
     this.engine.world.bodies.forEach(body => {
       body.frictionAir = 0;
       body.friction = 0;
       Matter.Body.setInertia(body, Infinity);
+    });
+
+    Matter.Events.on(this.engine, 'beforeUpdate', () => {
+      const umbrella = this.getBodyByLabel('umbrella');
+      if (!umbrella) return;
+      const tolerance = 0.42;
+      if (umbrella.angle < - Math.PI / 5 - tolerance || umbrella.angle > - Math.PI / 5 + tolerance) {
+        Matter.Body.setAngle(umbrella, - Math.PI / 5);
+      }
     });
 
     this.resizeHandler = this.updateByWindowSize.bind(this);
