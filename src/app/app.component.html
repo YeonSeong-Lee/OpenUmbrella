@@ -1,4 +1,4 @@
-<mat-drawer-container class="main-container">
+<mat-drawer-container class="main-container" [hasBackdrop]="false">
   <mat-toolbar class="mat-toolbar">
     <button mat-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
@@ -9,6 +9,7 @@
     <mat-list>
       <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of links"
       (click)="onSelectActiveLink(link.url)"
+      (click)="drawer.toggle()"
       [routerLink]="link.url">
           <mat-icon id="drawer-icon">{{link.icon}}</mat-icon>
           <span id="drawer-disply">{{link.displayName}}</span>
@@ -17,6 +18,7 @@
       <mat-divider></mat-divider>
       <a id="drawer-disply-wrapper" mat-list-item *ngFor="let link of noImportantLinks"
       (click)="onSelectActiveLink(link.url)"
+      (click)="drawer.toggle()"
       [routerLink]="link.url">
         <mat-icon id="drawer-icon">{{link.icon}}</mat-icon>
         <span id="drawer-disply">{{link.displayName}}</span>
