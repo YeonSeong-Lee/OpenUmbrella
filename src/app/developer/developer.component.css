@@ -96,7 +96,7 @@ h1 {
 }
 
 /* Add media query for responsiveness */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 414px) {
   h1 {
     font-size: 24px;
   }
