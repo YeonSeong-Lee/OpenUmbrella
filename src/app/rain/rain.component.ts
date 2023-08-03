@@ -17,7 +17,10 @@ export class RainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCurrentGaepoDongWeather();
     this.engine.run();
-    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, window.innerWidth > 414 ? 100 :  window.innerWidth * 0.22,
+    const radius = window.innerWidth > 414 ? 100 :  window.innerWidth * 0.22;
+    const halfAssetWidth = 75;
+    const halfAssetHeight = 75;
+    this.engine.addCircle(window.innerWidth / 2, window.innerHeight * 0.65, radius,
       {
         isStatic: false,
         restitution: 0.42,
@@ -25,8 +28,8 @@ export class RainComponent implements OnInit, OnDestroy {
         render: {
           sprite: {
             texture: 'assets/umbrella.svg',
-            xScale: 1.3,
-            yScale: 1.5,
+            xScale: radius / halfAssetWidth,
+            yScale: radius / halfAssetHeight * 1.2,
           },
         },
       });
