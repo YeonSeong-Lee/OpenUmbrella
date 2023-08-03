@@ -129,7 +129,6 @@ export class EngineService implements OnDestroy {
     Matter.World.clear(this.engine.world, true);
     Matter.Engine.clear(this.engine);
     this.render.canvas.remove();
-    console.log(this.resizeHandler, this.clickHandler);
     if (!this.resizeHandler || !this.clickHandler) return;
     window.removeEventListener('resize', this.resizeHandler);
     window.removeEventListener('click', this.clickHandler);

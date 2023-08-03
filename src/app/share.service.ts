@@ -37,7 +37,6 @@ export class ShareService {
         alert('Return successfully');
         return;
       } else {
-        console.log(result);
         alert(`Return failed: ${result.detail[0].msg}`);
         return;
       }
