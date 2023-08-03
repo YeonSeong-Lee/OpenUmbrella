@@ -3,15 +3,34 @@
     text-align: center;
 }
 
-.share-wrapper > h1 {
+.share-wrapper>h1 {
     margin: 12px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 12px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.bar {
+    flex: auto;
+    border: none;
+    height: 1px;
+    background-color: #e6e6e6;
+}
+
+.txt {
+    padding: 0 10px;
 }
 
 #reader {
     justify-content: center;
 }
 
-#info-wrapper {
+.alternative-wrapper {
     justify-content: center;
     text-align: center;
 }
