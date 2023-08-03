@@ -11,7 +11,7 @@ import { authGuard } from './auth/auth.guard';
 import { JwtComponent } from './login/jwt/jwt.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/rain', pathMatch: 'full' },
+  { path: '', redirectTo: '/share', pathMatch: 'full' },
   { path: 'rain', component: RainComponent },
   { path: 'developer', component: DeveloperComponent },
   { path: 'contributor', component: ContributorComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'history/:id', component: HistoryDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'jwt', component: JwtComponent },
-  { path: '**', redirectTo: '/rain' },
+  { path: '**', redirectTo: '/share' },
 ];
 
 @NgModule({
