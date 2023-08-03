@@ -1,7 +1,12 @@
 <div class="rain-container">
-  <h2>
-    현재 개포동 강수확률: {{rainProbability ?? "undefined"}} %
-  </h2>
+  <div class="weather-wrapper">
+    <h2>
+      현재 개포동 강수확률: {{rainProbability ?? "lodaing"}} %
+    </h2>
+    <h2>
+      현재 개포동 자외선 지수: {{uvIndexCategory ?? "loading"}}
+    </h2>
+  </div>
   <canvas id="rain-scene">
   </canvas>
 </div>

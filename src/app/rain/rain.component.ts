@@ -10,6 +10,8 @@ import { environment } from '../../environments/environment';
 export class RainComponent implements OnInit, OnDestroy {
   rainProbability:  number | undefined;
 
+  uvIndexCategory: string | undefined;
+
   intervalId: number | undefined;
 
   constructor(private engine: EngineService) {}
@@ -49,14 +51,20 @@ export class RainComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * @warn becaruful, this function is also runRain,
+   */
+  // TODO: refactoring, separate getCurrentGaepoDongWeather and runRain
   private getCurrentGaepoDongWeather() {
-    const baseDate = this.getBaseDate();
-    const baseTime = this.getBaseTime();
-    const url = `${environment.weatherEndpoint}/getVilageFcst?serviceKey=${environment.weatherKey}&dataType=JSON&base_date=${baseDate}&base_time=${baseTime}&nx=62&ny=25`;
+    const url = `${environment.api}/weather`;
     fetch(url)
       .then(response => response.json())
-      .then(data => data.response.body?.items.item.filter((item: { category: string }) => item.category === 'POP')[0].fcstValue)
-      .then(pop => this.rainProbability = pop)
+      .then(data => {
+        console.log(data);
+        this.rainProbability = data.rain_probability; 
+        this.uvIndexCategory = data.uv_index_category;
+        return data.rain_probability;
+      })
       .then(this.runRain.bind(this))
       .catch(error => console.error(error));
   }
@@ -81,32 +89,6 @@ export class RainComponent implements OnInit, OnDestroy {
         this.engine.addCircle(Math.random() * window.innerWidth, 0, radius, { restitution: 0.42, friction: 0.1, frictionAir: 0.01 });
       }
     }, delta * 10);
-  }
-
-  private getBaseDate() {
-    if (new Date().getHours() < 1) {
-      return new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10).replace(/-/g, '');
-    }
-    return new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  }
-
-  private getBaseTime() {
-    const baseTimes = ['0200', '0500', '0800', '1100', '1400', '1700', '2000', '2300'];
-
-    // 현재 시간을 구합니다.
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
-    const currentTime = `${currentHour.toString().padStart(2, '0')}${currentMinute.toString().padStart(2, '0')}`;
-  
-    if (currentTime < '0200') return '2300';
-    // API 제공 시간과 비교하여 현재 시간보다 작은 마지막 base_time을 찾습니다.
-    for (let i = baseTimes.length - 1; i >= 0; i--) {
-      if (baseTimes[i] < currentTime) {
-        return baseTimes[i];
-      }
-    }
-    return '2300';
   }
 
   ngOnDestroy(): void {
