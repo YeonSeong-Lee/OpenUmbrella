@@ -28,9 +28,15 @@
 
 #reader {
     justify-content: center;
+    margin-top: 24px;
 }
 
 .alternative {
-    justify-content: center;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#alternative-element {
+    margin-bottom: 22px;
 }

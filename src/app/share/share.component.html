@@ -1,4 +1,3 @@
-<!-- <h1>대출 / 반납</h1> -->
 <div id="reader"></div>
 
 <div class="divider">
@@ -9,7 +8,7 @@
 
  
 <form [formGroup]="umbrellaForm" class="alternative">
-    <mat-form-field color="primary">
+    <mat-form-field hintLabel="우산번호는 손잡이 확인" color="primary">
         <mat-label>우산번호</mat-label>
         <mat-select formControlName="selectedUmbrellaNumber">
             <mat-option *ngFor="let i of umbrellNumberaList" [value]="i">
@@ -17,6 +16,5 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <br/>
-    <button mat-raised-button (click)="callApi()" color="primary">대출/반납</button>
+    <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출/반납</button>
 </form>
