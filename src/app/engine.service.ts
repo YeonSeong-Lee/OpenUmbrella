@@ -124,8 +124,13 @@ export class EngineService implements OnDestroy {
       const umbrella = this.getBodyByLabel('umbrella');
       if (!umbrella) return;
       const tolerance = 0.42;
-      if (umbrella.angle < - Math.PI / 5 - tolerance || umbrella.angle > - Math.PI / 5 + tolerance) {
-        Matter.Body.setAngle(umbrella, - Math.PI / 5);
+      const maxAngle =  - Math.PI / 5 + tolerance;
+      const minAngle = - Math.PI / 5 - tolerance; 
+      if (umbrella.angle < minAngle) {
+        Matter.Body.setAngle(umbrella, minAngle);
+      }
+      if (umbrella.angle > maxAngle) {
+        Matter.Body.setAngle(umbrella, maxAngle);
       }
     });
 
