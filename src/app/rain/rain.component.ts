@@ -60,7 +60,6 @@ export class RainComponent implements OnInit, OnDestroy {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.rainProbability = data.rain_probability; 
         this.uvIndexCategory = data.uv_index_category;
         return data.rain_probability;
