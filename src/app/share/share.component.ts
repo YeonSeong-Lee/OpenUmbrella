@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QRService } from '../qr.service';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ShareService } from '../share.service';
 @Component({
   selector: 'app-share',
   templateUrl: './share.component.html',
@@ -13,7 +14,18 @@ export class ShareComponent implements OnInit, OnDestroy {
     31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 
-  constructor(private qrService: QRService) {}
+  umbrellaForm: FormGroup = this.formBuilder.group({
+    selectedUmbrellaNumber: [null],
+  });
+
+  constructor(private qrService: QRService, private formBuilder: FormBuilder, private shareService: ShareService) {}
+
+  async callApi() {
+    const selectedUmbrellControl = this.umbrellaForm.get('selectedUmbrellaNumber');
+    if (!selectedUmbrellControl) return;
+    const selectedUmbrellaNumber = Number(selectedUmbrellControl.value);
+    await this.shareService.LendOrReturnUmbrella(Number(selectedUmbrellaNumber));
+  }
 
   ngOnInit() {
     this.qrService.startScan();

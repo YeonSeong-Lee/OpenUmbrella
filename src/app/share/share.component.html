@@ -7,15 +7,16 @@
     <hr class="bar">
  </div>
 
-<div class="alternative-wrapper">
+ 
+<form [formGroup]="umbrellaForm" class="alternative">
     <mat-form-field color="primary">
         <mat-label>우산번호</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let i of umbrellNumberaList">
-        {{i}}
-    </mat-option>
-</mat-select>
-</mat-form-field>
-<br/>
-<button mat-raised-button type="submit" color="primary">대출/반납</button>
-</div>
+        <mat-select formControlName="selectedUmbrellaNumber">
+            <mat-option *ngFor="let i of umbrellNumberaList" [value]="i">
+                {{i}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button (click)="callApi()" color="primary">대출/반납</button>
+</form>
