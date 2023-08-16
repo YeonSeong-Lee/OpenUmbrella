@@ -25,7 +25,7 @@ OpenUmbrella는 42서울의 공유우산 서비스입니다. [다양한 분들�
 
 
 ### Demo
-- youtube link
+- https://youtube.com/shorts/eFJkSLmU4Y8?feature=share
 
 ### 기술 스택
 
