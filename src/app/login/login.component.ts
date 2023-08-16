@@ -19,7 +19,12 @@ export class LoginComponent {
     fetch(`${environment.api}/auth_url`, this.headerOptions).then((res) => {
       res.json().then((data) => {
         this.loading = false;
-        window.location.href = data.auth_url;
+        if (data.auth_url.includes('error')) {
+          alert('Error');
+          window.location.href = '/';
+        } else {
+          window.location.href = data.auth_url;
+        }
       },
       );
     },
