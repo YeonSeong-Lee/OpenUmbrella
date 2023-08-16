@@ -1,8 +1,9 @@
 <br />
 <div align="center">
   <a href="https://github.com/YeonSeong-Lee/OpenUmbrella">
-    <img src="" alt="poster" width="420" height="420">
+    <img src="https://github.com/YeonSeong-Lee/OpenUmbrella/assets/62806979/0fcd2b7f-b780-4f88-add6-73fc6dfd2fbc" alt="poster">
   </a>
+
 
   <h3 align="center">OpenUmbrella</h3>
 
