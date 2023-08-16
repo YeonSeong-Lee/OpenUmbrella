@@ -36,6 +36,7 @@ span {
   height: 48px;
   max-width: 414px;
   background: linear-gradient(45deg, #e6e6e6, #ffffff);
+  z-index: 2;
 }
 
 .drawer {
