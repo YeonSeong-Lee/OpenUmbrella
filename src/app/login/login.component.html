@@ -1,5 +1,7 @@
-<div class="oauth-button-wrapper">
+<div *ngIf="!loading" class="oauth-button-wrapper">
     <button mat-raised-button color="primary" (click)="login()">
         Login with 42OAuth
     </button>
 </div>
+
+<mat-spinner *ngIf="loading" class="spinner"></mat-spinner>

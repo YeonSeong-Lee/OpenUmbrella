@@ -12,3 +12,11 @@ button:active {
     align-items: center;
     margin-top: calc(50vh - 100px);
 }
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}

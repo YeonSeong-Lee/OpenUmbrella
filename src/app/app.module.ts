@@ -21,6 +21,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+/* Component */
 import { LoginComponent } from './login/login.component';
 import { JwtComponent } from './login/jwt/jwt.component';
 
@@ -44,6 +47,7 @@ import { JwtComponent } from './login/jwt/jwt.component';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    MatProgressSpinnerModule,
     ShareModule,
     HistoryModule,
     NgxGoogleAnalyticsModule.forRoot('G-X5K9PQFDJH'),

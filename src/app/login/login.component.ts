@@ -7,14 +7,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  loading = false;
+
   headerOptions = {
     headers: {
       'Content-Type': 'application/json',
     } };
 
   login() {
+    this.loading = true;
     fetch(`${environment.api}/auth_url`, this.headerOptions).then((res) => {
       res.json().then((data) => {
+        this.loading = false;
         window.location.href = data.auth_url;
       },
       );
