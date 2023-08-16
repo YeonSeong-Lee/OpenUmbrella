@@ -1,11 +1,54 @@
-# OpenUmbrella
+<br />
+<div align="center">
+  <a href="https://github.com/YeonSeong-Lee/OpenUmbrella">
+    <img src="" alt="poster" width="420" height="420">
+  </a>
 
-42서울 공유우산 서비스
+  <h3 align="center">OpenUmbrella</h3>
+
+  <p align="center">
+    42서울 공유우산 서비스
+    <br />
+    <br />
+    <a href="https://openumbrella.site/login">Visit Site</a>
+    ·
+    <a href="https://github.com/YeonSeong-Lee/OpenUmbrella/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/YeonSeong-Lee/OpenUmbrella/issues">Request Feature</a>
+  </p>
+</div>
+
+## 프로젝트 소개
+
+OpenUmbrella는 42서울의 공유우산 서비스입니다. [다양한 분들의 도움](https://openumbrella.site/contributor)으로 제작되었습니다.
 
 
-# Features
+### Demo
+- youtube link
 
-## QR 인식
+### 기술 스택
+
+<img src="https://img.shields.io/badge/angular.js-DD0031?style=for-the-badge&logo=angularjs&logoColor=white">
+
+---
+
+
+## 라이센스
+
+이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하십시오. 
+
+
+## 개발자
+|<img src="https://avatars.githubusercontent.com/u/62806979" height=80>|<img src="https://avatars.githubusercontent.com/u/38645951?v=4" height=80>
+|:-:|:-:|
+|[seongyle](https://github.com/YeonSeong-Lee)|[susong](https://github.com/SeungWoonSong)|
+
+
+
+---
+
+
+## AI QR 코드 제작 프롬포트
 
 [QR generator by AI](https://huggingface.co/spaces/huggingface-projects/QR-code-AI-art-generator)
 
