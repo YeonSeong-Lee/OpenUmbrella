@@ -2,20 +2,28 @@
     <li *ngFor="let status of statuses">
         <button class="possible" *ngIf="status.status === 'available'" routerLink="/history/{{status.id}}">
             <mat-icon id="possible">umbrella</mat-icon>
-                <div >
-                    <div>
-                        #{{status.id}} in cluster
-                    </div>
-                </div>               
+            <div>
+                <div>
+                    #{{status.id}} in cluster
+                </div>
+            </div>
         </button>
         <button class="impossible" *ngIf="status.status === 'borrowed'" routerLink="/history/{{status.id}}">
             <mat-icon id="impossible">beach_access</mat-icon>
+            <div>
                 <div>
-                    <div>
-                        #{{status.id}}
-                        {{status.owner_name}}
-                    </div>
+                    #{{status.id}}
+                    {{status.owner_name}}
                 </div>
+            </div>
+        </button>
+        <button class="missing" *ngIf="status.status === 'unavailable'" routerLink="/history{{status.id}}">
+            <mat-icon id="impossible">question_mark</mat-icon>
+            <div>
+                <div>
+                    #{{status.id}} is lost
+                </div>
+            </div>
         </button>
     </li>
 </ul>
