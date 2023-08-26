@@ -46,7 +46,7 @@ export class ShareService {
 
     // *** 대출이 아닐때 대출 시작 ***
     if (userStatus.status === 'available') {
-      const result = await fetch(`${environment.api} / umbrellas / borrow /? umbrella_id = ${umbrellaId}`, {
+      const result = await fetch(`${environment.api}/umbrellas/borrow/?umbrella_id=${umbrellaId}`, {
         method: 'POST',
         ...this.headerOptions,
       }).then((res) => res.json());
