@@ -16,7 +16,7 @@ export class ShareService {
   // TODO: 추후 refactoring 필요, http client의 interceptor를 사용하면 좋을듯
   public async LendOrReturnUmbrella(umbrellaId: number) {
     const userName = await fetch(`${environment.api}/me`, this.headerOptions).then((res) => res.json());
-    if (!userName) { 
+    if (!userName) {
       alert('Please login first');
       return;
     }
@@ -34,7 +34,7 @@ export class ShareService {
       }).then((res) => res.json());
 
       if (result.user_name) {
-        alert('Return successfully');
+        alert(`Return successfully: ${umbrellaId}`);
         return;
       } else {
         alert(`Return failed: ${result.detail[0].msg}`);
@@ -46,13 +46,13 @@ export class ShareService {
 
     // *** 대출이 아닐때 대출 시작 ***
     if (userStatus.status === 'available') {
-      const result = await fetch(`${environment.api}/umbrellas/borrow/?umbrella_id=${umbrellaId}`, {
+      const result = await fetch(`${environment.api} / umbrellas / borrow /? umbrella_id = ${umbrellaId}`, {
         method: 'POST',
         ...this.headerOptions,
       }).then((res) => res.json());
 
       if (result.user_name) {
-        alert('Borrow successfully');
+        alert(`Borrow successfully: ${umbrellaId}`);
         return;
       } else {
         alert(`Borrow failed: ${result.detail}`);
