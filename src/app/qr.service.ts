@@ -10,10 +10,20 @@ export class QRService {
 
   private html5QrcodeScanner!: Html5Qrcode;
 
-  private config = { fps: 1000, qrbox: 300 };
+  private config = { fps: 100, qrbox: 300 };
 
-  public startScan() {
+  public startQRCamera() {
     this.html5QrcodeScanner = new Html5Qrcode('reader');
+    this.html5QrcodeScanner.start(
+      { facingMode: 'environment' },
+      this.config,
+      () => {},  // Empty callback to do nothing on scan success
+      undefined,
+    );
+  }
+
+  public async startQRScan() {
+    await this.html5QrcodeScanner.stop();
     this.html5QrcodeScanner.start(
       { facingMode: 'environment' },
       this.config,
@@ -21,7 +31,7 @@ export class QRService {
       undefined,
     );
   }
-
+  
   public async stopScan() {
     await this.html5QrcodeScanner.stop();
     this.html5QrcodeScanner.clear();

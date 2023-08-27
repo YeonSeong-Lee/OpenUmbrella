@@ -27,8 +27,12 @@ export class ShareComponent implements OnInit, OnDestroy {
     await this.shareService.LendOrReturnUmbrella(Number(selectedUmbrellaNumber));
   }
 
+  startQRScan() {
+    this.qrService.startQRScan();
+  }
+
   ngOnInit() {
-    this.qrService.startScan();
+    this.qrService.startQRCamera();
   }
 
   ngOnDestroy() {
