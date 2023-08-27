@@ -6,7 +6,7 @@ import { ShareService } from './share.service';
   providedIn: 'root',
 })
 export class QRService {
-  constructor(private shareServie: ShareService) {}
+  constructor(private shareService: ShareService) { }
 
   private html5QrcodeScanner!: Html5Qrcode;
 
@@ -17,7 +17,7 @@ export class QRService {
     this.html5QrcodeScanner.start(
       { facingMode: 'environment' },
       this.config,
-      () => {},  // Empty callback to do nothing on scan success
+      () => { },  // Empty callback to do nothing on scan success
       undefined,
     );
   }
@@ -31,7 +31,7 @@ export class QRService {
       undefined,
     );
   }
-  
+
   public async stopScan() {
     await this.html5QrcodeScanner.stop();
     this.html5QrcodeScanner.clear();
@@ -40,7 +40,7 @@ export class QRService {
   private async onScanSuccess(decodedText: string) {
     await this.stopScan();
     const umbrellaID = Number(decodedText.slice(decodedText.lastIndexOf('/') + 1));
-    await this.shareServie.LendOrReturnUmbrella(umbrellaID);
+    await this.shareService.LendOrReturnUmbrella(umbrellaID);
   }
 }
 
