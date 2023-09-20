@@ -1,16 +1,4 @@
-<div id="reader"></div>
-
-<div class="qr-instruction-container">
-    <p class="txt center-content">QR코드를 화면에 맞춘뒤 QR스캔을 시작해주세요.</p>
-    <button mat-raised-button (click)="startQRScan()" color="primary" class="center-button">QR 스캔 시작</button>
-</div>
-
-<div class="divider">
-    <hr class="bar">
-    <span class="txt">or</span>
-    <hr class="bar">
- </div>
-
+<br>
 <form [formGroup]="umbrellaForm" class="alternative">
     <mat-form-field hintLabel="우산번호는 손잡이 확인" color="primary">
         <mat-label>우산번호</mat-label>
@@ -22,3 +10,16 @@
     </mat-form-field>
     <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출/반납</button>
 </form>
+
+<div class="divider">
+    <hr class="bar">
+    <span class="txt">or</span>
+    <hr class="bar">
+ </div>
+
+<div id="reader"></div>
+
+<div class="qr-instruction-container">
+    <p class="txt center-content">QR코드를 화면에 맞춘뒤 QR스캔을 시작해주세요.</p>
+    <button mat-raised-button (click)="startQRScan()" color="primary" class="center-button">QR 스캔 시작</button>
+</div>
