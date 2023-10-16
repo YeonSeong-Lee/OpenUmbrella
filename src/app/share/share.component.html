@@ -4,11 +4,11 @@
     현재 대여 가능한 우산이 없습니다.
 </h2>
 
-<form *ngIf="avaiableUmbrellaNumberList.length > 0" [formGroup]="umbrellaForm" class="alternative">
+<form [formGroup]="umbrellaForm" class="alternative">
     <mat-form-field hintLabel="우산번호는 손잡이 확인" color="primary">
         <mat-label>우산번호</mat-label>
         <mat-select formControlName="selectedUmbrellaNumber">
-            <mat-option *ngFor="let i of avaiableUmbrellaNumberList" [value]="i">
+            <mat-option *ngFor="let i of umbrellNumberaList" [value]="i">
                 {{i}}
             </mat-option>
         </mat-select>
@@ -16,15 +16,15 @@
     <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출/반납</button>
 </form>
 
-<div *ngIf="avaiableUmbrellaNumberList.length > 0" class="divider">
+<div class="divider">
     <hr class="bar">
     <span class="txt">or</span>
     <hr class="bar">
 </div>
 
-<div *ngIf="avaiableUmbrellaNumberList.length > 0" class="qr-instruction-container">
+<div class="qr-instruction-container">
     <p class="txt center-content">QR코드를 화면에 맞춘뒤 0.5초뒤 부터 인식을 시작합니다.</p>
     <button mat-raised-button (click)="startQRScan()" color="primary" class="center-button">QR 스캔 시작</button>
 </div>
 
-<div *ngIf="avaiableUmbrellaNumberList.length > 0" id="reader"></div>
+<div id="reader"></div>
