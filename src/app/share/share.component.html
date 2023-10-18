@@ -20,7 +20,10 @@
 
 <div *ngIf="myUmbrellaNumber" class="returning-component">
     <h2>
-        내가 대여한 우산 {{myUmbrellaNumber}}
+        내가 대여한 우산:
+        <span class="awesome-number">
+            {{myUmbrellaNumber}}
+        </span>
     </h2>
     <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">반납</button>
 </div>
