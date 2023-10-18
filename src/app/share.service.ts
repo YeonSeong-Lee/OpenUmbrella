@@ -71,4 +71,14 @@ export class ShareService {
     }
     return null;
   }
+
+  public getMyNickname() {
+    return fetch(`${environment.api}/me`, this.headerOptions).then((res) => res.json());
+  }
+
+  public async getMyUmbrella(nickname: string): Promise<number | undefined> {
+    const result = fetch(`${environment.api}/users/${nickname}`, this.headerOptions).then((res) => res.json());
+    const myUmbrella = (await result).umbrella;
+    return myUmbrella?.id;
+  }
 }

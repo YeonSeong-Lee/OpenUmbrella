@@ -16,6 +16,8 @@ export class ShareComponent implements OnInit, OnDestroy {
 
   avaiableUmbrellaNumberList = [];
 
+  myUmbrellaNumber: number | undefined;
+
   umbrellaForm: FormGroup = this.formBuilder.group({
     selectedUmbrellaNumber: [null],
   });
@@ -38,6 +40,13 @@ export class ShareComponent implements OnInit, OnDestroy {
     this.qrService.startQRCamera();
     this.qrService.getAvaiableUmbrella().then((result) => {
       this.avaiableUmbrellaNumberList = result;
+    });
+    // TODO: refactoring, make backeend API that return myUmbrellaNumber
+    this.shareService.getMyNickname().then((nickname) => {
+      this.shareService.getMyUmbrella(nickname).then((result) => {
+        this.myUmbrellaNumber = result;
+      },
+      );
     });
   }
 

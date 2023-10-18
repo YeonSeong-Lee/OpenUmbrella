@@ -8,12 +8,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
 @NgModule({
   declarations: [HistoryComponent, HistoryDetailComponent],
-  imports: [CommonModule, RouterModule, MatIconModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule],
+  imports: [CommonModule, RouterModule, MatIconModule, MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule, MatButtonModule],
 })
-export class HistoryModule {}
+export class HistoryModule { }

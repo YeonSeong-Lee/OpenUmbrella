@@ -4,17 +4,29 @@
     현재 대여 가능한 우산이 없습니다.
 </h2>
 
-<form [formGroup]="umbrellaForm" class="alternative">
-    <mat-form-field hintLabel="우산번호는 손잡이 확인" color="primary">
-        <mat-label>우산번호</mat-label>
-        <mat-select formControlName="selectedUmbrellaNumber">
-            <mat-option *ngFor="let i of umbrellNumberaList" [value]="i">
-                {{i}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출/반납</button>
-</form>
+<div *ngIf="myUmbrellaNumber === undefined">
+    <form [formGroup]="umbrellaForm" class="alternative">
+        <mat-form-field hintLabel="우산번호는 손잡이 확인" color="primary">
+            <mat-label>우산번호</mat-label>
+            <mat-select formControlName="selectedUmbrellaNumber">
+                <mat-option *ngFor="let i of avaiableUmbrellaNumberList" [value]="i">
+                    {{i}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출</button>
+    </form>
+</div>
+
+<div *ngIf="myUmbrellaNumber" class="returning-component">
+    <h2>
+        내가 대여한 우산:
+        <span class="awesome-number">
+            {{myUmbrellaNumber}}
+        </span>
+    </h2>
+    <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">반납</button>
+</div>
 
 <div class="divider">
     <hr class="bar">

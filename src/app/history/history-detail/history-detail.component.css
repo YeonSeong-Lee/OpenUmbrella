@@ -14,6 +14,14 @@ table {
     margin: 0;
 }
 
+.history-detail-top-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 414px;
+    flex-direction: row;
+}
+
+
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
@@ -22,4 +30,8 @@ table {
 .mat-elevation-z8 {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#alternative-element {
+    margin-top: 1rem;
 }
