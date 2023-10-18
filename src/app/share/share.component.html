@@ -16,6 +16,10 @@
     <button mat-raised-button id="alternative-element" (click)="callApi()" color="primary">대출/반납</button>
 </form>
 
+<h2 *ngIf="myUmbrellaNumber">
+    내가 대여한 우산 {{myUmbrellaNumber}}
+</h2>
+
 <div class="divider">
     <hr class="bar">
     <span class="txt">or</span>
