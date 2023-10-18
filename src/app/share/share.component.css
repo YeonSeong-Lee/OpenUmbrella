@@ -7,6 +7,12 @@
     margin: 12px;
 }
 
+.returning-component {
+    display: flex;
+    justify-content: space-around;
+    margin: 12px;
+}
+
 .divider {
     display: flex;
     align-items: center;
