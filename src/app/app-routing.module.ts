@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'share/:id', component: ShareComponent },
   { path: 'share', component: ShareComponent, canActivate: [authGuard] },
   { path: 'history', component: HistoryComponent },
-  { path: 'history/:id', component: HistoryDetailComponent },
+  { path: 'history/:id', component: HistoryDetailComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'jwt', component: JwtComponent },
   { path: '**', redirectTo: '/share' },
@@ -28,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
