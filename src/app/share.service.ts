@@ -63,6 +63,21 @@ export class ShareService {
     // *** 대출이 아닐때 대출 끝 ***
   }
 
+  public async returnUmbrella(umbrellaId: number) {
+    const result = await fetch(`${environment.api}/umbrellas/return/?umbrella_id=${umbrellaId}`, {
+      method: 'POST',
+      ...this.headerOptions,
+    }).then((res) => res.json());
+
+    if (result.user_name) {
+      alert(`Return successfully: ${umbrellaId}`);
+      return;
+    } else {
+      alert(`Return failed: ${result.detail[0].msg}`);
+      return;
+    }
+  }
+
   private getCookie(name: string) {
     const value = '; ' + document.cookie;
     const parts = value.split('; ' + name + '=');

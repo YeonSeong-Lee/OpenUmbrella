@@ -31,6 +31,11 @@ export class ShareComponent implements OnInit, OnDestroy {
     await this.shareService.LendOrReturnUmbrella(Number(selectedUmbrellaNumber));
   }
 
+  async callReturnApi() {
+    if (!this.myUmbrellaNumber) return;
+    await this.shareService.returnUmbrella(this.myUmbrellaNumber);
+  }
+
   startQRScan() {
     this.qrService.startQRScan();
   }
