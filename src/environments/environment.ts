@@ -1,4 +1,4 @@
 const environment = {
   production: true,
-  api: 'http://api.umbrella.42seoul-service.link',
+  api: 'https://api.umbrella.42seoul-service.link',
 };
