@@ -5,7 +5,7 @@ import { ShareModule } from './share/share.module';
 import { HistoryModule } from './history/history.module';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 /* Component */
 import { LoginComponent } from './login/login.component';
 import { JwtComponent } from './login/jwt/jwt.component';
+
+/* Interceptor */
+import { HttpErrorInterceptor } from './http-error-interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,12 @@ import { JwtComponent } from './login/jwt/jwt.component';
     HistoryModule,
     NgxGoogleAnalyticsModule.forRoot('G-X5K9PQFDJH'),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: HttpErrorInterceptor,
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
