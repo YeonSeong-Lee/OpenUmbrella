@@ -45,7 +45,7 @@ export class QRService {
   }
 
   public async getAvaiableUmbrella() {
-    const result = await fetch(`${environment.api}/umbrellas/?skip=0&limit=50`, this.headerOptions).then((res) => res.json());
+    const result = await fetch(`${environment.api}/umbrellas/?skip=0&limit=100`, this.headerOptions).then((res) => res.json());
     const available = result.filter((umbrella: { status: string; }) => umbrella.status === 'available');
     return available.map((umbrella: { id: number; }) => umbrella.id);
   }

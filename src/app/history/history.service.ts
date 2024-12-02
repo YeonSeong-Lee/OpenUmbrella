@@ -18,7 +18,7 @@ export class HistoryService {
   };
 
   getHistories() {
-    return this.http.get(environment.api + '/umbrellas/' + '?skip=0&limit=50', this.httpOptions);
+    return this.http.get(environment.api + '/umbrellas/' + '?skip=0&limit=100', this.httpOptions);
   
   }
 
