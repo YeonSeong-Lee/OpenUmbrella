@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class ContributorComponent {
   donators = ['jmaing', 'juha', 'jihokim2', 'seongyle', 'sokwon', 'hhwang', 'yukim', 'kiyolee'];
 
-  operators = ['seongyle', 'yonghyle', 'sunhwang', 'sooyokim', 'hhwang', 'wochae', 'seonhoki', 'jaewchoi', 'juha', 'jimin', 'sangmipa', 'junmoon', 'sujikim'];
+  operators = ['seongyle', 'yonghyle', 'sunhwang', 'sooyokim', 'hhwang', 'wochae', 'seonhoki', 'jaewchoi', 'juha', 'jimin', 'sangmipa', 'junmoon', 'sujikim', 'hyeunkim', 'dongyenuk', 'sayoon' ];
 
   designers = ['junmoon'];
 }
