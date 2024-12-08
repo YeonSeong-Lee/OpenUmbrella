@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
 import ContributorCard from '@/components/contributor/ContributorCard'
 
 const contributors = {
@@ -44,27 +47,83 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 }
 
 const ContributorPage = () => {
-  const allContributors = shuffleArray([
-    ...contributors.operators.map(c => ({ ...c, type: 'operator' })),
-    ...contributors.donators.map(c => ({ ...c, type: 'donator' })),
-    ...contributors.designers.map(c => ({ ...c, type: 'designer' }))
-  ])
+  const [items, setItems] = useState<Array<{
+    name: string
+    detail: string
+    type: string
+  }>>([])
+  const [isDragging, setIsDragging] = useState(false)
+  const dragItem = useRef<number | null>(null)
+  const dragOverItem = useRef<number | null>(null)
+
+  useEffect(() => {
+    const initialItems = shuffleArray([
+      ...contributors.operators.map(c => ({ ...c, type: 'operator' })),
+      ...contributors.donators.map(c => ({ ...c, type: 'donator' })),
+      ...contributors.designers.map(c => ({ ...c, type: 'designer' }))
+    ])
+    setItems(initialItems)
+  }, [])
+
+  const handleDragStart = (index: number) => {
+    dragItem.current = index
+    setIsDragging(true)
+  }
+
+  const handleDragEnter = (index: number) => {
+    dragOverItem.current = index
+    
+    if (dragItem.current !== null) {
+      const itemsCopy = [...items]
+      const draggedItem = itemsCopy[dragItem.current]
+      itemsCopy.splice(dragItem.current, 1)
+      itemsCopy.splice(index, 0, draggedItem)
+      setItems(itemsCopy)
+      dragItem.current = index
+    }
+  }
+
+  const handleDragEnd = () => {
+    setIsDragging(false)
+    dragItem.current = null
+    dragOverItem.current = null
+  }
 
   return (
     <div className="min-h-screen p-8">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-8 text-center text-4xl font-bold">Thanks to</h1>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {allContributors.map((contributor) => (
-            <ContributorCard
+          {items.map((contributor, index) => (
+            <div
               key={`${contributor.type}-${contributor.name}`}
-              name={contributor.name}
-              role={contributor.type === 'operator' ? 'Operator' : 
-                    contributor.type === 'donator' ? 'Donator' : 'Designer'}
-              contributions={contributor.detail}
-              cardType={contributor.type === 'operator' ? 'electric' :
-                       contributor.type === 'donator' ? 'psychic' : 'fairy'}
-            />
+              draggable
+              onDragStart={() => handleDragStart(index)}
+              onDragEnter={() => handleDragEnter(index)}
+              onDragEnd={handleDragEnd}
+              onDragOver={(e) => e.preventDefault()}
+              className={`
+                transform transition-all duration-300 ease-in-out
+                hover:scale-[1.02] 
+                active:scale-[0.98] 
+                cursor-grab 
+                active:cursor-grabbing
+                ${isDragging ? 'z-50' : 'z-0'}
+              `}
+              style={{
+                transform: `translateY(${isDragging && dragOverItem.current === index ? '20px' : '0px'})`,
+                transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+              }}
+            >
+              <ContributorCard
+                name={contributor.name}
+                role={contributor.type === 'operator' ? 'Operator' : 
+                      contributor.type === 'donator' ? 'Donator' : 'Designer'}
+                contributions={contributor.detail}
+                cardType={contributor.type === 'operator' ? 'electric' :
+                         contributor.type === 'donator' ? 'psychic' : 'fairy'}
+              />
+            </div>
           ))}
         </div>
       </div>
