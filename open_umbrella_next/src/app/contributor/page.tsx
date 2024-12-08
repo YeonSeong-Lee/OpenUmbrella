@@ -34,42 +34,36 @@ const contributors = {
   ]
 }
 
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
 const ContributorPage = () => {
+  const allContributors = shuffleArray([
+    ...contributors.operators.map(c => ({ ...c, type: 'operator' })),
+    ...contributors.donators.map(c => ({ ...c, type: 'donator' })),
+    ...contributors.designers.map(c => ({ ...c, type: 'designer' }))
+  ])
+
   return (
     <div className="min-h-screen p-8">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-8 text-center text-4xl font-bold">Thanks to</h1>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Operators */}
-          {contributors.operators.map((contributor) => (
+          {allContributors.map((contributor) => (
             <ContributorCard
-              key={`operator-${contributor.name}`}
+              key={`${contributor.type}-${contributor.name}`}
               name={contributor.name}
-              role="Operator"
+              role={contributor.type === 'operator' ? 'Operator' : 
+                    contributor.type === 'donator' ? 'Donator' : 'Designer'}
               contributions={contributor.detail}
-              cardType="electric"
-            />
-          ))}
-          
-          {/* Donators */}
-          {contributors.donators.map((contributor) => (
-            <ContributorCard
-              key={`donator-${contributor.name}`}
-              name={contributor.name}
-              role="Donator"
-              contributions={contributor.detail}
-              cardType="psychic"
-            />
-          ))}
-          
-          {/* Designers */}
-          {contributors.designers.map((contributor) => (
-            <ContributorCard
-              key={`designer-${contributor.name}`}
-              name={contributor.name}
-              role="Designer"
-              contributions={contributor.detail}
-              cardType="fairy"
+              cardType={contributor.type === 'operator' ? 'electric' :
+                       contributor.type === 'donator' ? 'psychic' : 'fairy'}
             />
           ))}
         </div>
