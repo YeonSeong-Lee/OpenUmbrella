@@ -1,45 +1,81 @@
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import ContributorCard from '@/components/contributor/ContributorCard'
 
-y
-    name: '홍길동',
-    role: '프론트엔드 개발자',
-    github: 'honggildong',
-    avatar: 'https://github.com/honggildong.png'
-  },
-  // ... 더 많은 기여자
-]
+const contributors = {
+  donators: [
+    { name: 'jmaing', detail: '24.10.24 기부' },
+    { name: 'juha', detail: '24.10.24 기부' },
+    { name: 'jihokim2', detail: '24.10.24 기부' },
+    { name: 'seongyle', detail: '24.10.24 기부' },
+    { name: 'sokwon', detail: '24.10.24 기부' },
+    { name: 'hhwang', detail: '24.10.24 기부' },
+    { name: 'yukim', detail: '24.10.24 기부' },
+    { name: 'kiyolee', detail: '24.10.24 기부' }
+  ],
+  operators: [
+    { name: 'seongyle', detail: '24.12.04 노력 기부' },
+    { name: 'yonghyle', detail: '24.12.04 노력 기부' },
+    { name: 'sunhwang', detail: '24.12.04 노력 기부' },
+    { name: 'sooyokim', detail: '24.12.04 노력 기부' },
+    { name: 'hhwang', detail: '24.12.04 노력 기부' },
+    { name: 'wochae', detail: '24.12.04 노력 기부' },
+    { name: 'seonhoki', detail: '24.12.04 노력 기부' },
+    { name: 'jaewchoi', detail: '24.12.04 노력 기부' },
+    { name: 'juha', detail: '24.12.04 노력 기부' },
+    { name: 'jimin', detail: '24.12.04 노력 기부' },
+    { name: 'sangmipa', detail: '24.12.04 노력 기부' },
+    { name: 'junmoon', detail: '24.12.04 노력 기부' },
+    { name: 'sujikim', detail: '24.12.04 노력 기부' },
+    { name: 'hyeunkim', detail: '24.12.04 노력 기부' },
+    { name: 'dongyenuk', detail: '24.12.04 노력 기부' },
+    { name: 'sayoon', detail: '24.12.04 노력 기부' }
+  ],
+  designers: [
+    { name: 'junmoon', detail: '디자인 총괄' }
+  ]
+}
 
-export default function ContributorPage() {
+const ContributorPage = () => {
   return (
     <div className="min-h-screen p-8">
-      <h1 className="text-2xl font-bold mb-8">기여자 목록</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {contributors.map((contributor) => (
-          <Card key={contributor.github} className="hover:shadow-lg transition-shadow">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <Avatar className="h-12 w-12">
-                <AvatarImage src={contributor.avatar} alt={contributor.name} />
-                <AvatarFallback>{contributor.name[0]}</AvatarFallback>
-              </Avatar>
-              <div>
-                <h2 className="text-lg font-semibold">{contributor.name}</h2>
-                <p className="text-sm text-muted-foreground">{contributor.role}</p>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <a 
-                href={`https://github.com/${contributor.github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-500 hover:underline"
-              >
-                @{contributor.github}
-              </a>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="mx-auto max-w-7xl">
+        <h1 className="mb-8 text-center text-4xl font-bold">Thanks to</h1>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Operators */}
+          {contributors.operators.map((contributor) => (
+            <ContributorCard
+              key={`operator-${contributor.name}`}
+              name={contributor.name}
+              role="Operator"
+              contributions={contributor.detail}
+              cardType="electric"
+            />
+          ))}
+          
+          {/* Donators */}
+          {contributors.donators.map((contributor) => (
+            <ContributorCard
+              key={`donator-${contributor.name}`}
+              name={contributor.name}
+              role="Donator"
+              contributions={contributor.detail}
+              cardType="psychic"
+            />
+          ))}
+          
+          {/* Designers */}
+          {contributors.designers.map((contributor) => (
+            <ContributorCard
+              key={`designer-${contributor.name}`}
+              name={contributor.name}
+              role="Designer"
+              contributions={contributor.detail}
+              cardType="fairy"
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
-} 
+}
+
+export default ContributorPage
