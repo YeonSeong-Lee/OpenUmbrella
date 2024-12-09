@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   description: "42서울의 공유우산 서비스, OpenUmbrella"
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="ko">
       <body
@@ -32,3 +32,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;

@@ -1,4 +1,4 @@
-export default function MyPage() {
+const MyPage = () =>   {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">마이 페이지</h1>
@@ -18,3 +18,5 @@ export default function MyPage() {
     </div>
   );
 }
+
+export default MyPage;

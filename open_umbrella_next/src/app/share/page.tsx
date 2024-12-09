@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function SharePage() {
+const SharePage = () => {
   return (
     <div className="min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-4">Share</h1>
@@ -10,3 +8,5 @@ export default function SharePage() {
     </div>
   );
 } 
+
+export default SharePage;

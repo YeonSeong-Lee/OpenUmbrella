@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function HistoryPage() {
+const HistoryPage = () => {
   return (
     <div className="min-h-screen p-8">
       <h1 className="text-2xl font-bold mb-4">History</h1>
@@ -10,3 +8,5 @@ export default function HistoryPage() {
     </div>
   );
 } 
+
+export default HistoryPage;
