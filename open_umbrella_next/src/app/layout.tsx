@@ -12,7 +12,17 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: "공유우산",
-  description: "42서울의 공유우산 서비스, OpenUmbrella"
+  description: "42서울의 공유우산 서비스, OpenUmbrella",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+    other: {
+      rel: 'mask-icon',
+      url: '/favicon.svg',
+      color: '#2563EB'
+    }
+  }
 };
 
 const RootLayout = ({

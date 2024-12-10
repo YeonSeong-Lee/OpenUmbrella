@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="16" cy="16" r="16" fill="#2563EB"/>
+  
+  <!-- Umbrella Icon -->
+  <path d="M16 8C11.582 8 8 11.582 8 16H24C24 11.582 20.418 8 16 8Z" fill="white"/>
+  <path d="M15 16V22C15 22.5523 15.4477 23 16 23C16.5523 23 17 22.5523 17 22V16" fill="white"/>
+  
+  <!-- Handle -->
+  <path d="M16 16V23C16 23.5523 16.4477 24 17 24C17.5523 24 18 23.5523 18 23V22" fill="white"/>
+</svg> 
