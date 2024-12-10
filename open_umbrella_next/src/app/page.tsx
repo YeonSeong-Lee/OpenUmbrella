@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { ArrowRight, Umbrella, Clock, Shield, Users } from 'lucide-react'
+import { ArrowRight, Umbrella, Clock, ScrollText, Users } from 'lucide-react'
 import { RainEffect } from '@/components/rain-effect'
 
 const features = [
@@ -25,7 +25,7 @@ const features = [
   {
     title: '이력 관리',
     description: '우산의 대출/반납 기록을 추적',
-    icon: Shield,
+    icon: ScrollText,
     color: 'text-orange-500'
   }
 ]
