@@ -3,7 +3,11 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-// 빗방울 생성 함수
+/**
+ * 빗방울 생성 함수
+ * @param count 빗방울 개수
+ * @returns 빗방울 배열
+ */
 const createRaindrops = (count: number) => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
@@ -14,6 +18,8 @@ const createRaindrops = (count: number) => {
     width: 1 + Math.random() * 1
   }))
 }
+
+// TODO: 빗방울이 튕기는 효과 추가, 메인화면 글자를 우산 모양으로 변경
 
 const RainEffect = () => {
   const [raindrops, setRaindrops] = useState(() => createRaindrops(100))
