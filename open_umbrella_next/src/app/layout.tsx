@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navigation from '@/components/Navigation';
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -21,13 +22,16 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ko">
-      <body
-        className={`${pretendard.variable} antialiased min-h-screen flex flex-col`}
-      >
-        <main className="flex-1">
-          {children}
-        </main>
-        <Navigation />
+        <body
+          className={`${pretendard.variable} antialiased min-h-screen flex`}
+        >
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex-1 p-4">
+              <SidebarTrigger />
+              {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );
