@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { CalendarDays, Settings, Umbrella } from 'lucide-react'
+import { CalendarDays, Settings, Umbrella, LogOut } from 'lucide-react'
 import { EditProfileDialog } from '@/components/profile/edit-profile-dialog'
 
 function MyPage() {
@@ -21,6 +21,15 @@ function MyPage() {
       ...prev,
       ...data
     }))
+  }
+
+  const handleLogout = async () => {
+    try {
+      // TODO: 실제 로그아웃 API 호출
+      window.location.href = '/auth'
+    } catch (error) {
+      console.error('로그아웃 중 오류가 발생했습니다:', error)
+    }
   }
 
   // 우산 대여 기록 데이터 추가
@@ -45,9 +54,19 @@ function MyPage() {
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">마이 페이지</h1>
-        <Button variant="outline" size="icon">
-          <Settings className="h-4 w-4" />
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="icon">
+            <Settings className="h-4 w-4" />
+          </Button>
+          <Button 
+            variant="destructive" 
+            size="icon" 
+            onClick={handleLogout}
+            title="로그아웃"
+          >
+            <LogOut className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-6">

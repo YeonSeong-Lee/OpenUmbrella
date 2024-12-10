@@ -1,6 +1,12 @@
+'use client'
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 const TermsPage = () => {
+  const router = useRouter()
+
   return (
     <div className="container mx-auto p-4 min-h-[calc(100vh-4rem)]">
       <Card>
@@ -50,6 +56,15 @@ const TermsPage = () => {
           </section>
         </CardContent>
       </Card>
+      <div className="mt-4 flex justify-center">
+        <Button 
+          variant="outline"
+          onClick={() => router.back()}
+          className="w-full sm:w-auto"
+        >
+          뒤로 가기
+        </Button>
+      </div>
     </div>
   )
 }
