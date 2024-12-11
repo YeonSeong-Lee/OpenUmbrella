@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth'
+import FortyTwoProvider from 'next-auth/providers/42-school'
 import GoogleProvider from 'next-auth/providers/google'
 
 const handler = NextAuth({
@@ -7,6 +8,10 @@ const handler = NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+    FortyTwoProvider({
+      clientId: process.env.FORTYTWO_CLIENT_ID!,
+      clientSecret: process.env.FORTYTWO_CLIENT_SECRET!,
+    })
   ],
   pages: {
     signIn: '/auth',
