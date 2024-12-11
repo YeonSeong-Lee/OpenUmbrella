@@ -6,19 +6,46 @@ import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { toast } from '@/components/ui/use-toast'
 
 const AuthPage = () => {
   const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false)
   const [is42Loading, setIs42Loading] = useState<boolean>(false)
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl') || '/'
+  const error = searchParams.get('error')
+
+  // 에러 메시지 표시
+  if (error) {
+    toast({
+      title: '로그인 오류',
+      description: '로그인 중 문제가 발생했습니다. 다시 시도해주세요.',
+      variant: 'destructive',
+    })
+  }
 
   const handleGoogleAuth = async () => {
     setIsGoogleLoading(true)
     try {
-      await signIn('google', { callbackUrl })
+      const result = await signIn('google', {
+        callbackUrl,
+        redirect: true,
+      })
+      
+      if (result?.error) {
+        toast({
+          title: '로그인 실패',
+          description: 'Google 로그인 중 오류가 발생했습니다.',
+          variant: 'destructive',
+        })
+      }
     } catch (error) {
       console.error('Google 인증 중 오류가 발생했습니다:', error)
+      toast({
+        title: '로그인 실패',
+        description: '알 수 없는 오류가 발생했습니다.',
+        variant: 'destructive',
+      })
     } finally {
       setIsGoogleLoading(false)
     }

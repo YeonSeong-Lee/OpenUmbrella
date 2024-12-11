@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { Providers } from './providers'
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -35,13 +36,15 @@ const RootLayout = ({
         <body
           className={`${pretendard.variable} antialiased min-h-screen flex`}
         >
-          <SidebarProvider>
-            <AppSidebar />
-            <main className="flex-1 p-4">
-              <SidebarTrigger />
-              {children}
-          </main>
-        </SidebarProvider>
+          <Providers>
+            <SidebarProvider>
+              <AppSidebar />
+              <main className="flex-1 p-4">
+                <SidebarTrigger />
+                {children}
+            </main>
+          </SidebarProvider>
+        </Providers>
       </body>
     </html>
   );
