@@ -1,0 +1,44 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  providers     String[]  // Array of providers ('google', '42-school', etc)
+  providerIds   String[]  // Array of OAuth provider user IDs
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  umbrellaLogs  UmbrellaLog[]
+}
+
+model Umbrella {
+  id          String    @id @default(cuid())
+  number      String    @unique  // 우산 번호
+  status      String    @default("AVAILABLE") // AVAILABLE, IN_USE, MAINTENANCE
+  location    String?   // 현재 위치
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  logs        UmbrellaLog[]
+}
+
+model UmbrellaLog {
+  id          String    @id @default(cuid())
+  action      String    // BORROW, RETURN
+  location    String    // 대여/반납 위치
+  createdAt   DateTime  @default(now())
+  userId      String
+  umbrellaId  String
+  user        User      @relation(fields: [userId], references: [id])
+  umbrella    Umbrella  @relation(fields: [umbrellaId], references: [id])
+
+  @@index([userId])
+  @@index([umbrellaId])
+} 
